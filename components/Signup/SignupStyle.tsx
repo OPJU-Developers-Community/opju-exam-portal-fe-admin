@@ -1,6 +1,5 @@
 import { Button, TextField } from "@mui/material";
 import { styled } from "@mui/system";
-import { motion } from "framer-motion";
 
 export const SignupWrapper = styled("div")({
   display: "flex",
