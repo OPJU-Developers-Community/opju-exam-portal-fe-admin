@@ -1,10 +1,11 @@
-// components
 import NavBar from "@/components/NavBar";
 
-export default function Home() {
+const UserManagement = () => {
   return (
     <>
       <NavBar />
     </>
   );
-}
+};
+
+export default UserManagement;
