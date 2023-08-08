@@ -23,8 +23,6 @@ import {
   UserProfileIcon,
 } from "./NavbarStyle";
 
-const animation = {}
-
 const NavBar = () => {
   const [toggleDropDownMenu, setToggleDropDownMenu] = useState(false);
   const router = useRouter();
