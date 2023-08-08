@@ -49,3 +49,36 @@ export const BlueDotIcon = styled("div")({
 export const UserProfileIcon = styled(Avatar)({
   cursor: "pointer",
 });
+
+export const DivContainer = styled("div")({
+  position: "relative",
+});
+
+export const DropDownMenu = styled("div")({
+  position: "absolute",
+  bottom: "-9rem",
+  right: "0",
+  background: "#fff",
+  boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+  padding: "0.8rem 0.5rem",
+  borderRadius: 4,
+});
+
+export const ProfileMenuItem = styled(Link)(
+  ({ linktype }: { linktype?: string }) => ({
+    fontSize: "1rem",
+    color: linktype === "logout" ? "#ef233c" : "#212529",
+    fontWeight: 600,
+    display: "flex",
+    alignItems: "center",
+    padding: "0.6rem 2rem 0.6rem 0.2rem",
+    margin: "0.2rem 0",
+  })
+);
+
+export const Divider = styled("div")({
+  width: "100%",
+  height: "1px",
+  background: "#212529",
+  opacity: 0.1,
+});
