@@ -27,9 +27,7 @@ const NavBar = () => {
   const [toggleDropDownMenu, setToggleDropDownMenu] = useState(false);
   const router = useRouter();
 
-  const handleDropDownMenu = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleDropDownMenu = () => {
     setToggleDropDownMenu((prev) => !prev);
   };
 
