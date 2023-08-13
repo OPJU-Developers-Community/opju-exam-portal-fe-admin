@@ -8,7 +8,7 @@ import { signupApi } from "../apis/authApi";
 import { signupType } from "@/types/auth.type";
 
 
-interface userState {
+export interface userState {
     data: object | null,
     status: 'idle' | 'loading' | 'success' | 'failed',
     message: string

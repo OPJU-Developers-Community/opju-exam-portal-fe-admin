@@ -1,11 +1,12 @@
 // lib & other
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 // thunk and slices
-import { signUp } from "@/redux/slices/authSlice";
+import { signUp, userState } from "@/redux/slices/authSlice";
 
 // types
 import { signupType } from "@/types/auth.type";
@@ -30,7 +31,17 @@ const Signup = () => {
     password: "",
   });
 
+  const authState = useSelector((state: { auth: userState }) => state.auth);
+
   const dispatch = useDispatch<any>();
+
+  const route = useRouter();
+
+  useEffect(() => {
+    if (authState.status === "success") {
+      route.push("/");
+    }
+  }, [authState.status]);
 
   const handleInputFieldChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
