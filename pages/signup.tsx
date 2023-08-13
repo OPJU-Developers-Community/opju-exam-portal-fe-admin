@@ -10,8 +10,7 @@ const SignupPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const access_token = window.localStorage.getItem("access_token") || "";
-    if (access_token !== "") {
+    if (localStorage.getItem("access_token")) {
       router.push("/");
     }
   }, []);
