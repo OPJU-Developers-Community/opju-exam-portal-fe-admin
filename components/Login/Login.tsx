@@ -25,9 +25,9 @@ const Login = () => {
         <LoginBox>
           <Title>Login</Title>
           <SubTitle>Welcome back! please login to your account</SubTitle>
-          <InputField id="standard-basic" label="Email" variant="standard" />
+          <InputField id="standard-basic-email" label="Email" variant="standard" />
           <InputField
-            id="standard-basic"
+            id="standard-basic-password"
             label="Password"
             variant="standard"
             type="password"
