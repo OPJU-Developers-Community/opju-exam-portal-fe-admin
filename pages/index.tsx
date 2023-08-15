@@ -1,22 +1,16 @@
 // lib and others
 import { useEffect } from "react";
-import { useRouter } from "next/router";
 
 // components
+import withAuth from "@/hoc/withAuth";
 import NavBar from "@/components/NavBar/NavBar";
 
-export default function Home() {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
-      router.push("/login");
-    }
-  }, []);
-
+function Home() {
   return (
     <>
       <NavBar />
     </>
   );
 }
+
+export default withAuth(Home);
