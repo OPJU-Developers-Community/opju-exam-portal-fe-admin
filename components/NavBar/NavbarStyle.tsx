@@ -3,7 +3,6 @@ import { styled } from "@mui/system";
 import Link from "next/link";
 
 export const NavBarWrapper = styled("div")({
-  width: "100vw",
   boxShadow:
     "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px",
   height: "60px",
