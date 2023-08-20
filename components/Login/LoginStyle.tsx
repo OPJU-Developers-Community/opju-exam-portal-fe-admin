@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Button, TextField } from "@mui/material";
+import { Button, Link, TextField } from "@mui/material";
 
 export const LoginWrapper = styled("div")({
   display: "flex",
@@ -86,3 +86,7 @@ export const LoginButton = styled(Button)({
     backgroundColor: "#4361ee",
   },
 });
+
+export const CreateAccountBox = styled(Link)({
+  
+})
