@@ -1,6 +1,15 @@
 // lib and other
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+
+// thunk and slices
+import { login, userState } from "@/redux/slices/authSlice";
+
+// types
+import { loginType } from "@/types/auth.type";
 
 // styles
 import LoginSvg from "@/public/login.svg";
@@ -13,9 +22,37 @@ import {
   Title,
   InputField,
   LoginButton,
+  CreateAccountBox,
 } from "./LoginStyle";
 
 const Login = () => {
+  const [inputFieldValues, setInputFiledValues] = useState<loginType>({
+    email: "",
+    password: "",
+  });
+
+  const authState = useSelector((state: {auth: userState}) => state.auth);
+
+  const dispatch = useDispatch<any>()
+
+  const route = useRouter();
+
+  useEffect(() => {
+    if(authState.status === "success"){
+      route.push("/");
+    }
+  }, [authState.status])
+
+  const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setInputFiledValues((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  }
+
+  const handleLogin = () => {
+    dispatch(login(inputFieldValues));
+  }
   return (
     <LoginWrapper>
       <LeftSection>
@@ -25,20 +62,29 @@ const Login = () => {
         <LoginBox>
           <Title>Login</Title>
           <SubTitle>Welcome back! please login to your account</SubTitle>
-          <InputField id="standard-basic-email" label="Email" variant="standard" />
+          <InputField
+            id="standard-basic-email"
+            label="Email"
+            variant="standard"
+            name="email"
+            onChange={handleInputFieldChange}
+          />
           <InputField
             id="standard-basic-password"
             label="Password"
             variant="standard"
             type="password"
+            name="password"
+            onChange={handleInputFieldChange}
           />
           <motion.div
             whileTap={{
               scale: 0.99,
             }}
           >
-            <LoginButton variant="contained">Login</LoginButton>
+            <LoginButton variant="contained" onClick={handleLogin}>Login</LoginButton>
           </motion.div>
+          <CreateAccountBox href="/signup" underline="none">Create Account</CreateAccountBox>
         </LoginBox>
       </RightSection>
     </LoginWrapper>

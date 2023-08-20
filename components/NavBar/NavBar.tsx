@@ -3,6 +3,10 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { navLinks } from "@/utils/constants";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+
+// thunk and slices
+import { logOut } from "@/redux/slices/authSlice";
 
 // icons
 import { LogoutIcon, SettingIcon } from "@/utils/icons";
@@ -25,11 +29,18 @@ import {
 
 const NavBar = () => {
   const [toggleDropDownMenu, setToggleDropDownMenu] = useState(false);
+
+  const dispatch = useDispatch<any>();
+
   const router = useRouter();
 
   const handleDropDownMenu = () => {
     setToggleDropDownMenu((prev) => !prev);
   };
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  }
 
   return (
     <NavBarWrapper>
@@ -65,7 +76,7 @@ const NavBar = () => {
                 Settings
               </ProfileMenuItem>
               <Divider />
-              <ProfileMenuItem href="/settings" linktype="logout">
+              <ProfileMenuItem href="/login" linktype="logout" onClick={handleLogout}>
                 <LogoutIcon />
                 Log out
               </ProfileMenuItem>
