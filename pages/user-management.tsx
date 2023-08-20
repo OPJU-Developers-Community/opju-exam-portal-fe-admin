@@ -1,3 +1,7 @@
+// lib and others
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 // hoc
 import withAuth from "@/hoc/withAuth";
 
@@ -6,16 +10,48 @@ import NavBar from "@/components/NavBar/NavBar";
 import UserManagementSection from "@/components/UserManagementSection/UserManagementSection";
 import { Wrapper } from "./styles/UserManagementPageStyle";
 
-// utils
-import { userManagementUsers } from "@/utils/constants";
+// redux
+import { getQuestionSetter } from "@/redux/slices/questionSetterSlice";
 
 const UserManagement = () => {
+  const { data: questionSetterData, status: questionSetterApiStatus } =
+    useSelector((state: any) => state.questionSetter);
+
+  const dispatch = useDispatch<any>();
+
+  useEffect(() => {
+    dispatch(getQuestionSetter({ type: "question_setter" }));
+  }, []);
+
+  const userManagementUsers = [
+    {
+      title: "Question Setter",
+      data: questionSetterData,
+      apiStatus: questionSetterApiStatus,
+    },
+    {
+      title: "Question Verifier",
+      data: [],
+      apiStatus: "",
+    },
+    {
+      title: "Examiner",
+      data: [],
+      apiStatus: "",
+    },
+  ];
+
   return (
     <>
       <NavBar />
       <Wrapper>
-        {userManagementUsers.map((userType, index) => (
-          <UserManagementSection title={userType} key={index} />
+        {userManagementUsers.map((user, index) => (
+          <UserManagementSection
+            title={user.title}
+            data={user.data}
+            apiStatus={user.apiStatus}
+            key={index}
+          />
         ))}
       </Wrapper>
     </>

@@ -4,7 +4,14 @@ import { useState } from "react";
 // redux
 
 // components
-import { Avatar, MenuItem, MenuList, Popover, Typography } from "@mui/material";
+import {
+  Avatar,
+  MenuItem,
+  MenuList,
+  Popover,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 
 // styled-component
 import {
@@ -18,18 +25,29 @@ import {
   StyledChip,
   KebabMenuBox,
   LeftSection,
+  SkeletonWrapper,
 } from "./UserManagementSectionStyle";
 
 // utils
 import { AddIcon, DeleteIcon, EditIcon, KebabMenuIcon } from "@/utils/icons";
 
 // interface & types
-type PropInterface = {
-  title: string;
+type dataObjectType = {
+  firstname: string;
+  lastname: string;
+  access: string[];
+  email: string;
+  profilePic: string;
 };
 
-const UserManagementSection = (props: PropInterface) => {
-  const { title = "" } = props;
+type propType = {
+  title: string;
+  data: dataObjectType[];
+  apiStatus: string;
+};
+
+const UserManagementSection = (props: propType) => {
+  const { title = "", data = [], apiStatus = "idle" } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | SVGSVGElement>(null);
 
@@ -56,58 +74,94 @@ const UserManagementSection = (props: PropInterface) => {
         </StyledButton>
       </Header>
       <Body>
-        <Card>
-          <CardHeader>
-            <LeftSection>
-              <Avatar>H</Avatar>
-              <div>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={600}
-                  fontFamily={"Nunito"}
-                  marginX={1}
-                >
-                  setter one
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  fontWeight={500}
-                  fontFamily={"Nunito"}
-                  marginX={1}
-                >
-                  email
-                </Typography>
-              </div>
-            </LeftSection>
-            <KebabMenuBox>
-              <KebabMenuIcon handleClick={handleClick} />
-              <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-              >
-                <MenuList dense>
-                  <MenuItem onClick={handleClose} sx={{ fontFamily: "Nunito" }}>
-                    <EditIcon />
-                    Edit
-                  </MenuItem>
-                  <MenuItem onClick={handleClose} sx={{ fontFamily: "Nunito" }}>
-                    <DeleteIcon />
-                    Delete
-                  </MenuItem>
-                </MenuList>
-              </Popover>
-            </KebabMenuBox>
-          </CardHeader>
-          <CardBody>
-            <StyledChip label="Operating system" />
-          </CardBody>
-        </Card>
+        <>
+          {apiStatus === "success" && (
+            <>
+              {data.map((item, i) => {
+                const { firstname, lastname, access, email, profilePic } = item;
+
+                return (
+                  <Card key={i}>
+                    <CardHeader>
+                      <LeftSection>
+                        <Avatar>H</Avatar>
+                        <div>
+                          <Typography
+                            variant="subtitle1"
+                            fontWeight={600}
+                            fontFamily={"Nunito"}
+                            marginX={1}
+                          >
+                            {`${firstname} ${lastname}`}
+                          </Typography>
+                          <Typography
+                            variant="subtitle2"
+                            fontWeight={500}
+                            fontFamily={"Nunito"}
+                            marginX={1}
+                            color="#4361ee"
+                          >
+                            {email}
+                          </Typography>
+                        </div>
+                      </LeftSection>
+                      <KebabMenuBox>
+                        <KebabMenuIcon handleClick={handleClick} />
+                        <Popover
+                          id={id}
+                          open={open}
+                          anchorEl={anchorEl}
+                          onClose={handleClose}
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "left",
+                          }}
+                        >
+                          <MenuList dense>
+                            <MenuItem
+                              onClick={handleClose}
+                              sx={{ fontFamily: "Nunito" }}
+                            >
+                              <EditIcon />
+                              Edit
+                            </MenuItem>
+                            <MenuItem
+                              onClick={handleClose}
+                              sx={{ fontFamily: "Nunito" }}
+                            >
+                              <DeleteIcon />
+                              Delete
+                            </MenuItem>
+                          </MenuList>
+                        </Popover>
+                      </KebabMenuBox>
+                    </CardHeader>
+                    <CardBody>
+                      {access.map((item, i) => (
+                        <StyledChip label={item} key={i} />
+                      ))}
+                    </CardBody>
+                  </Card>
+                );
+              })}
+            </>
+          )}
+
+          {apiStatus === "loading" && (
+            <>
+              {[1, 2, 3, 4, 5].map((_, index) => (
+                <SkeletonWrapper key={index}>
+                  <Skeleton variant="circular" width={40} height={40} />
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem", width: "50%", margin: "0.5rem 0" }}
+                  />
+                  <Skeleton variant="rectangular" width={210} height={20} />
+                </SkeletonWrapper>
+              ))}
+            </>
+          )}
+        </>
       </Body>
     </Wrapper>
   );

@@ -61,7 +61,7 @@ export const KebabMenuBox = styled("div")({
 });
 
 export const CardBody = styled("div")({
-  padding: "1rem 0 0 0",
+  padding: "1rem 0 0.7rem 0",
 });
 
 export const StyledChip = styled(Chip)({
@@ -70,4 +70,14 @@ export const StyledChip = styled(Chip)({
   fontFamily: "Nunito",
   fontWeight: 500,
   color: "#f8f9fa",
+  margin: "0.5rem 0.3rem 0 0",
+});
+
+export const SkeletonWrapper = styled("div")({
+  padding: "0.5rem 1rem",
+  borderBottom: "1px solid #ced4da",
+
+  "&:hover": {
+    background: "#e9ecef",
+  },
 });
