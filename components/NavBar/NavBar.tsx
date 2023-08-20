@@ -57,6 +57,7 @@ const NavBar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, x: "20%" }}
             transition={{ duration: 0.5 }}
+            style={{ position: "relative", zIndex: 1 }}
           >
             <DropDownMenu>
               <ProfileMenuItem href="/settings">

@@ -61,6 +61,7 @@ export const DropDownMenu = styled("div")({
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
   padding: "0.8rem 0.5rem",
   borderRadius: 4,
+  zIndex: "100",
 });
 
 export const ProfileMenuItem = styled(Link)(
