@@ -20,4 +20,10 @@ export const navLinks: navLinkType[] = [
         name: "Report",
         path: "/report"
     },
-] 
+]
+
+export const userManagementUsers = [
+    "Question Setter",
+    "Question Verifier",
+    "Examiner",
+]
