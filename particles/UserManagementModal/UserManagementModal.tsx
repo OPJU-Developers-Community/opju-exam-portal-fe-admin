@@ -8,7 +8,10 @@ import {
   SaveButton,
 } from "./UserManagementModalStyle";
 
-const UserManagementModal = (props) => {
+// types
+import { UserManagementModalPropType } from "@/types/index.type";
+
+const UserManagementModal = (props: UserManagementModalPropType) => {
   const { isOpen, handleModalClose } = props;
 
   return (
