@@ -1,17 +1,17 @@
 import { Button, TextField } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const ModalWrapper = styled("div")({
-  padding: "1rem 1.5rem",
-  borderRadius: "13px",
-  width: 400,
-  boxShadow: 24,
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  background: "#fff",
-});
+export const ModalWrapper = styled("div")`
+  padding: 1rem 1.5rem;
+  border-radius: 13px;
+  width: 400;
+  box-shadow: 24;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+`;
 
 export const InputField = styled(TextField)({
   width: "100%",
