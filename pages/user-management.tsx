@@ -8,7 +8,7 @@ import withAuth from "@/hoc/withAuth";
 // components
 import NavBar from "@/components/NavBar/NavBar";
 import UserManagementSection from "@/components/UserManagementSection/UserManagementSection";
-import { Wrapper } from "./UserManagementStyle";
+import { Wrapper } from "@/styles/UserManagementStyle";
 
 // redux
 import { getQuestionSetter } from "@/redux/slices/questionSetterSlice";
