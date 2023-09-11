@@ -18,7 +18,7 @@ const SignupPage = () => {
   return (
     <>
       <Head>
-        <title>OPJU Exam Portal || signup</title>
+        <title>OPJU Exam Portal || signup page</title>
       </Head>
       <Signup />
     </>
