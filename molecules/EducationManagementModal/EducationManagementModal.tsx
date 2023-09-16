@@ -1,5 +1,7 @@
 // lib & others
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 // interface & types
 import { EducationManagementModalPropType } from "@/types/index.type";
@@ -15,12 +17,25 @@ import {
   StyledLabel,
 } from "./EducationManagementModalStyle";
 
+// thunk and slices
+import { createEducation } from "@/redux/slices/educationManagementSlice";
+
 const EducationManagementModal = (props: EducationManagementModalPropType) => {
   const { isOpen, handleModalClose } = props;
   const [selectedValue, setSelectedValue] = useState("university");
+  const dispatch = useDispatch<any>();
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace({ query: selectedValue });
+  }, [selectedValue]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue((event.target as HTMLInputElement).value);
+  };
+
+  const handleOnClickSave = (fieldData: object, subjects: string[]) => {
+    dispatch(createEducation({ fieldData, subjects, queryType: selectedValue }));
   };
 
   return (
@@ -53,11 +68,13 @@ const EducationManagementModal = (props: EducationManagementModalPropType) => {
               control={<Radio />}
               label="University"
             />
-            <StyledLabel value="School" control={<Radio />} label="School" />
+            <StyledLabel value="school" control={<Radio />} label="School" />
           </RadioGroup>
         </FormControlWrapper>
 
-        {selectedValue === "university" ? <UniversityInfo /> : null}
+        {selectedValue === "university" ? (
+          <UniversityInfo handleOnClickSave={handleOnClickSave} />
+        ) : null}
       </ModalWrapper>
     </Modal>
   );

@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, FormControl, FormControlLabel } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const Wrapper = styled("div")({
@@ -28,4 +28,15 @@ export const Header = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+});
+
+export const FormControlWrapper = styled(FormControl)({
+  margin: "1rem 0 0 0",
+  fontWeight: 500,
+});
+
+export const StyledLabel = styled(FormControlLabel)({
+  "& > span": {
+    fontFamily: "Nunito",
+  },
 });

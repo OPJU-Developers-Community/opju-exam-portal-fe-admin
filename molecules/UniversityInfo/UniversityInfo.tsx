@@ -13,8 +13,13 @@ import {
 } from "./UniversityInfoStyle";
 
 // types & interface
+type PropType = {
+  handleOnClickSave: (fieldData: object, subjects: string[]) => void;
+};
 
-const UniversityInfo = () => {
+const UniversityInfo = (props: PropType) => {
+  const { handleOnClickSave } = props;
+
   const [subjects, setSubjects] = useState<string[]>([]);
   const [fieldData, setFieldData] = useState({
     program_name: "",
@@ -80,7 +85,7 @@ const UniversityInfo = () => {
         )}
       />
       <Box sx={{ display: "flex", justifyContent: "flex-end", marginTop: 1 }}>
-        <SaveButton onClick={() => {}}>
+        <SaveButton onClick={() => handleOnClickSave(fieldData, subjects)}>
           <Typography fontFamily="Nunito" fontWeight={500}>
             Save
           </Typography>

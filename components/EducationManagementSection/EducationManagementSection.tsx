@@ -1,13 +1,20 @@
 // lib & others
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 // redux
 
 // components
-import { Typography } from "@mui/material";
+import { Radio, RadioGroup, Typography } from "@mui/material";
 
 // styled-components
-import { Header, StyledButton, Wrapper } from "./EducationManagementStyle";
+import {
+  FormControlWrapper,
+  Header,
+  StyledButton,
+  StyledLabel,
+  Wrapper,
+} from "./EducationManagementStyle";
 import EducationManagementModal from "@/molecules/EducationManagementModal/EducationManagementModal";
 
 // utils
@@ -16,10 +23,20 @@ import EducationManagementModal from "@/molecules/EducationManagementModal/Educa
 
 const EducationManagementSection = () => {
   const [ModalOpen, setModalOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("university");
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace({ query: selectedValue });
+  }, [selectedValue]);
 
   const handleModalOpen = () => setModalOpen(true);
 
   const handleModalClose = () => setModalOpen(false);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue((event.target as HTMLInputElement).value);
+  };
 
   return (
     <Wrapper>
@@ -29,6 +46,22 @@ const EducationManagementSection = () => {
         </Typography>
         <StyledButton onClick={handleModalOpen}>Create Education</StyledButton>
       </Header>
+      <FormControlWrapper>
+        <RadioGroup
+          row
+          aria-labelledby="demo-row-radio-buttons-group-label"
+          name="row-radio-buttons-group"
+          value={selectedValue}
+          onChange={handleChange}
+        >
+          <StyledLabel
+            value="university"
+            control={<Radio />}
+            label="University"
+          />
+          <StyledLabel value="school" control={<Radio />} label="School" />
+        </RadioGroup>
+      </FormControlWrapper>
       <EducationManagementModal
         isOpen={ModalOpen}
         handleModalClose={handleModalClose}
