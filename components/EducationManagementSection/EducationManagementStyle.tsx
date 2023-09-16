@@ -2,12 +2,13 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const Wrapper = styled("div")({
-  width: "85vw",
-  margin: "4.5rem auto",
-})
+  height: "80vh",
+  width: "80%",
+  margin: "4rem auto",
+});
 
 export const StyledButton = styled(Button)({
-  paddingRight: "1rem",
+  // paddingRight: "1rem",
   boxShadow: "none",
   background: "#212529",
   color: "#f8f9fa",
@@ -27,4 +28,4 @@ export const Header = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-})
+});

@@ -6,5 +6,4 @@ export interface UserManagementModalPropType {
 export interface EducationManagementModalPropType {
     isOpen: boolean,
     handleModalClose: () => void,
-    selectedOption: string | null,
 }
