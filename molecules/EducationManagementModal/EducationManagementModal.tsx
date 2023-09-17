@@ -19,6 +19,7 @@ import {
 
 // thunk and slices
 import { createEducation } from "@/redux/slices/educationManagementSlice";
+import { errorNotify, successNotify } from "@/utils/notify";
 
 const EducationManagementModal = (props: EducationManagementModalPropType) => {
   const { isOpen, handleModalClose } = props;
@@ -34,8 +35,18 @@ const EducationManagementModal = (props: EducationManagementModalPropType) => {
     setSelectedValue((event.target as HTMLInputElement).value);
   };
 
-  const handleOnClickSave = (fieldData: object, subjects: string[]) => {
-    dispatch(createEducation({ fieldData, subjects, queryType: selectedValue }));
+  const handleOnClickSave = async (fieldData: object, subjects: string[]) => {
+    const response = await dispatch(
+      createEducation({ fieldData, subjects, queryType: selectedValue })
+    );
+
+    if (response?.error?.message == "Rejected") {
+      errorNotify({ message: response.payload.message });
+    }
+
+    if (response.payload.success) {
+      successNotify({ message: response.payload.message });
+    }
   };
 
   return (

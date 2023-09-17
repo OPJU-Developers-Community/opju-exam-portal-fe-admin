@@ -19,11 +19,11 @@ export interface educationManagementPayloadType {
 // thunk
 export const createEducation = createAsyncThunk("createEducation",async (payload: educationManagementPayloadType, thunkAPI) => {
     try {
-        const response = await createEducationApi(payload);
+        const response = await createEducationApi(payload);        
         return response.data
     }catch(error) {
         const axiosError = error as AxiosError;
-
+        
         if(axiosError.response) {
             return thunkAPI.rejectWithValue(axiosError.response.data);
         }
@@ -37,7 +37,7 @@ const initialState: stateType = {
 }
 
 const educationManagementSlice = createSlice({
-    name: "questionSetter",
+    name: "educationManagement",
     initialState,
     reducers: {},
     // extraReducers: (builder) => {
