@@ -1,70 +1,73 @@
 // lib & others
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 // redux
 
 // components
-import { MenuItem, Popover, Typography } from "@mui/material";
+import { Radio, RadioGroup, Typography } from "@mui/material";
 
 // styled-components
-import { Header, StyledButton, Wrapper } from "./EducationManagementStyle";
-import EducationManagementModal from "@/particles/EducationManagementModal/EducationManagementModal";
+import {
+  FormControlWrapper,
+  Header,
+  StyledButton,
+  StyledLabel,
+  Wrapper,
+} from "./EducationManagementStyle";
+import EducationManagementModal from "@/molecules/EducationManagementModal/EducationManagementModal";
 
 // utils
 
 // interface & types
 
 const EducationManagementSection = () => {
-    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-    const [ModalOpen, setModalOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [ModalOpen, setModalOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("university");
+  const router = useRouter();
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => setAnchorEl(null);
+  useEffect(() => {
+    router.replace({ query: selectedValue });
+  }, [selectedValue]);
 
-    const handleModalOpen = (option: string) => {
-        setSelectedOption(option);
-        setModalOpen(true);
-        handleClose();
-    };
+  const handleModalOpen = () => setModalOpen(true);
 
-    const handleModalClose = () => setModalOpen(false);
+  const handleModalClose = () => setModalOpen(false);
 
-    const open = Boolean(anchorEl);
-    const id = open ? "simple-popover" : undefined;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue((event.target as HTMLInputElement).value);
+  };
 
-    return (
-        <Wrapper>
-            <EducationManagementModal
-                isOpen={ModalOpen}
-                selectedOption={selectedOption}
-                handleModalClose={handleModalClose} />
-            <Header>
-                <Typography variant="h6">Education management</Typography>
-                <StyledButton onClick={handleClick}>Create Education</StyledButton>
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                    }}
-                    PaperProps={{
-                        style: {
-                            width: "155px",
-                        },
-                    }}
-                >
-                    <MenuItem onClick={() => handleModalOpen("school")}>School</MenuItem>
-                    <MenuItem onClick={() => handleModalOpen("university")}>University</MenuItem>
-                </Popover>
-            </Header>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <Header>
+        <Typography variant="h5" fontFamily="Nunito" fontWeight={600}>
+          Education management
+        </Typography>
+        <StyledButton onClick={handleModalOpen}>Create Education</StyledButton>
+      </Header>
+      <FormControlWrapper>
+        <RadioGroup
+          row
+          aria-labelledby="demo-row-radio-buttons-group-label"
+          name="row-radio-buttons-group"
+          value={selectedValue}
+          onChange={handleChange}
+        >
+          <StyledLabel
+            value="university"
+            control={<Radio />}
+            label="University"
+          />
+          <StyledLabel value="school" control={<Radio />} label="School" />
+        </RadioGroup>
+      </FormControlWrapper>
+      <EducationManagementModal
+        isOpen={ModalOpen}
+        handleModalClose={handleModalClose}
+      />
+    </Wrapper>
+  );
 };
 
 export default EducationManagementSection;

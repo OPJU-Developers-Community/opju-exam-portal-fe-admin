@@ -4,7 +4,7 @@
 import withAuth from "@/hoc/withAuth";
 
 // components
-import NavBar from "@/components/NavBar/NavBar"
+import NavBar from "@/components/NavBar/NavBar";
 import EducationManagementSection from "@/components/EducationManagementSection/EducationManagementSection";
 
 // redux
@@ -15,7 +15,7 @@ const EducationManagement = () => {
       <NavBar />
       <EducationManagementSection />
     </div>
-  )
-}
+  );
+};
 
 export default withAuth(EducationManagement);

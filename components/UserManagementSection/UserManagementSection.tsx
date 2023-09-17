@@ -14,7 +14,7 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import UserManagementModal from "@/particles/UserManagementModal/UserManagementModal";
+import UserManagementModal from "@/molecules/UserManagementModal/UserManagementModal";
 
 // styled-component
 import {
