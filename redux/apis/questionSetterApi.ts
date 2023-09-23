@@ -12,5 +12,5 @@ export const getQuestionSetterApi = (payload: userManagementpayloadType) => {
 		},
 	};
 
-    return axios.get(`${process.env.NEXT_PUBLIC_DEV_URL}/admin/user-management`, config)
+    return axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/admin/user-management`, config)
 }
