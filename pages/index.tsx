@@ -1,14 +1,16 @@
 // lib and others
 import { useEffect } from "react";
 
-// components
+// hoc
 import withAuth from "@/hoc/withAuth";
-import NavBar from "@/components/NavBar/NavBar";
+
+// components
+import DashboardTemplate from "@/templates/DashboardTemplate/DashboardTemplate";
 
 function Home() {
   return (
     <>
-      <NavBar />
+      <DashboardTemplate />
     </>
   );
 }
