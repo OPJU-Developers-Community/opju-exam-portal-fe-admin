@@ -8,11 +8,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100%;
   background: #f8f9fa;
 }
 
 a {
   text-decoration: none;
+  color: #000;
 }

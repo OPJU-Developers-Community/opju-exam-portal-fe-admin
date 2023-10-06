@@ -1,5 +1,12 @@
+// styled component
+import XHeader from "@/organisms/XHeader/XHeader";
+
 const DashboardTemplate = () => {
-  return <div>DashboardTemplate</div>;
+  return (
+    <div>
+      <XHeader />
+    </div>
+  );
 };
 
 export default DashboardTemplate;
