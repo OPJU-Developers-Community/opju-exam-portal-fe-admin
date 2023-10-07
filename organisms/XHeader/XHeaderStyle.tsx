@@ -1,9 +1,5 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-
-interface TextProp {
-  color?: string;
-}
 
 export const HeaderWrapper = styled("div")({
   height: "60px",
@@ -20,6 +16,10 @@ export const LogoContainer = styled("div")({
   alignItems: "center",
 });
 
+interface TextProp {
+  color?: string;
+}
+
 export const Text = styled(Typography)(({ color }: TextProp) => ({
   fontFamily: "Poppins, sans-serif",
   color: color ? color : "#000",
@@ -32,12 +32,12 @@ export const MenuList = styled("ul")({
   padding: 0,
 });
 
-export const MenuItem = styled("li")({
+export const MenuItem = styled("li")(() => ({
   listStyle: "none",
   margin: "0 0.9rem",
   position: "relative",
 
-  "&::after": {
+  "&.active::after": {
     content: '""',
     position: "absolute",
     bottom: "calc(10px - 29px)",
@@ -46,9 +46,14 @@ export const MenuItem = styled("li")({
     width: "100%",
     background: "#0083FF",
   },
-});
+}));
 
-export const ProfileContainer = styled("div")({
+export const ProfileContainer = styled(Button)({
   display: "flex",
   alignItems: "center",
+  cursor: "pointer",
+
+  "&:hover": {
+    background: "none",
+  },
 });

@@ -1,8 +1,9 @@
 // lib and others
 import Link from "next/link";
+import { useState } from "react";
 
 // styled component
-import { DownArrowIcon, Logo } from "@/atoms/Icons";
+import { DownArrowIcon, Logo, UpArrowIcon } from "@/atoms/Icons";
 import {
   HeaderWrapper,
   LogoContainer,
@@ -11,9 +12,22 @@ import {
   ProfileContainer,
   Text,
 } from "./XHeaderStyle";
+import ProfileMenu from "@/molecules/ProfileMenu/ProfileMenu";
 import { Avatar, Box } from "@mui/material";
 
 const XHeader = () => {
+  const [currentNavItem, setCurrentNavItem] = useState("dashboard");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <HeaderWrapper>
       <LogoContainer>
@@ -25,22 +39,34 @@ const XHeader = () => {
         </Link>
       </LogoContainer>
       <MenuList>
-        <MenuItem>
+        <MenuItem
+          className={currentNavItem === "dashboard" ? "active" : ""}
+          onClick={() => setCurrentNavItem("dashboard")}
+        >
           <Link href="/">Dashboard</Link>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+          className={currentNavItem === "user_management" ? "active" : ""}
+          onClick={() => setCurrentNavItem("user_management")}
+        >
           <Link href="/user-management">User Management</Link>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+          className={currentNavItem === "education_management" ? "active" : ""}
+          onClick={() => setCurrentNavItem("education_management")}
+        >
           <Link href="/education-management">Education Management</Link>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+          className={currentNavItem === "report" ? "active" : ""}
+          onClick={() => setCurrentNavItem("report")}
+        >
           <Link href="/report">Report</Link>
         </MenuItem>
       </MenuList>
-      <ProfileContainer>
+      <ProfileContainer onClick={handleClick} disableRipple>
         <Avatar alt="Remy Sharp" />
-        <Box marginX={0.5}>
+        <Box marginX={0.5} textAlign="left">
           <Text fontSize="14px" fontWeight={500}>
             Frank C. Gautier
           </Text>
@@ -48,8 +74,9 @@ const XHeader = () => {
             Admin
           </Text>
         </Box>
-        <DownArrowIcon />
+        {open ? <UpArrowIcon /> : <DownArrowIcon />}
       </ProfileContainer>
+      <ProfileMenu open={open} anchorEl={anchorEl} handleClose={handleClose} />
     </HeaderWrapper>
   );
 };
