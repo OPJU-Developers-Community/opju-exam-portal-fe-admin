@@ -66,7 +66,7 @@ const XHeader = () => {
       </MenuList>
       <ProfileContainer onClick={handleClick} disableRipple>
         <Avatar alt="Remy Sharp" />
-        <Box marginX={0.5} textAlign="left">
+        <Box marginX={0.5} textAlign="left" textTransform="capitalize">
           <Text fontSize="14px" fontWeight={500}>
             Frank C. Gautier
           </Text>
