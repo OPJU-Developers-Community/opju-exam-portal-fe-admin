@@ -1,6 +1,7 @@
 // lib and others
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 // styled component
 import { DownArrowIcon, Logo, UpArrowIcon } from "@/atoms/Icons";
@@ -16,9 +17,9 @@ import ProfileMenu from "@/molecules/ProfileMenu/ProfileMenu";
 import { Avatar, Box } from "@mui/material";
 
 const XHeader = () => {
-  const [currentNavItem, setCurrentNavItem] = useState("dashboard");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const router = useRouter();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -39,30 +40,32 @@ const XHeader = () => {
         </Link>
       </LogoContainer>
       <MenuList>
-        <MenuItem
-          className={currentNavItem === "dashboard" ? "active" : ""}
-          onClick={() => setCurrentNavItem("dashboard")}
-        >
-          <Link href="/">Dashboard</Link>
-        </MenuItem>
-        <MenuItem
-          className={currentNavItem === "user_management" ? "active" : ""}
-          onClick={() => setCurrentNavItem("user_management")}
-        >
-          <Link href="/user-management">User Management</Link>
-        </MenuItem>
-        <MenuItem
-          className={currentNavItem === "education_management" ? "active" : ""}
-          onClick={() => setCurrentNavItem("education_management")}
-        >
-          <Link href="/education-management">Education Management</Link>
-        </MenuItem>
-        <MenuItem
-          className={currentNavItem === "report" ? "active" : ""}
-          onClick={() => setCurrentNavItem("report")}
-        >
-          <Link href="/report">Report</Link>
-        </MenuItem>
+        <Link href="/">
+          <MenuItem className={router.pathname === "/" ? "active" : ""}>
+            Dashboard
+          </MenuItem>
+        </Link>
+        <Link href="/user-management">
+          <MenuItem
+            className={router.pathname === "/user_management" ? "active" : ""}
+          >
+            User Management
+          </MenuItem>
+        </Link>
+        <Link href="/education-management">
+          <MenuItem
+            className={
+              router.pathname === "/education_management" ? "active" : ""
+            }
+          >
+            Education Management
+          </MenuItem>
+        </Link>
+        <Link href="/report">
+          <MenuItem className={router.pathname === "/report" ? "active" : ""}>
+            Report
+          </MenuItem>
+        </Link>
       </MenuList>
       <ProfileContainer onClick={handleClick} disableRipple>
         <Avatar alt="Remy Sharp" />
