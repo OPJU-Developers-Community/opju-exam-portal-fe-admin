@@ -4,7 +4,7 @@ import { useEffect } from "react";
 // hoc
 import withAuth from "@/hoc/withAuth";
 
-// components
+// template
 import DashboardTemplate from "@/templates/DashboardTemplate/DashboardTemplate";
 
 function Home() {

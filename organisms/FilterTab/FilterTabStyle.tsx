@@ -17,7 +17,9 @@ type tabType = {
 };
 export const StyledTab = styled("span")(({ active }: tabType) => ({
   background: active ? "#FCFCFC" : "transparent",
-  border: active ? "1px solid rgba(137, 137, 137, 0.40)" : "none",
+  border: active
+    ? "1px solid rgba(137, 137, 137, 0.40)"
+    : "1px solid transparent",
   borderRadius: "6px",
   padding: "0.5rem 1rem",
   cursor: "pointer",

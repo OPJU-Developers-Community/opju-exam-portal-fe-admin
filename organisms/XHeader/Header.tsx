@@ -12,11 +12,11 @@ import {
   MenuList,
   ProfileContainer,
   Text,
-} from "./XHeaderStyle";
+} from "./HeaderStyle";
 import ProfileMenu from "@/molecules/ProfileMenu/ProfileMenu";
 import { Avatar, Box } from "@mui/material";
 
-const XHeader = () => {
+const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -47,7 +47,7 @@ const XHeader = () => {
         </Link>
         <Link href="/user-management">
           <MenuItem
-            className={router.pathname === "/user_management" ? "active" : ""}
+            className={router.pathname === "/user-management" ? "active" : ""}
           >
             User Management
           </MenuItem>
@@ -55,7 +55,7 @@ const XHeader = () => {
         <Link href="/education-management">
           <MenuItem
             className={
-              router.pathname === "/education_management" ? "active" : ""
+              router.pathname === "/education-management" ? "active" : ""
             }
           >
             Education Management
@@ -84,4 +84,4 @@ const XHeader = () => {
   );
 };
 
-export default XHeader;
+export default Header;
