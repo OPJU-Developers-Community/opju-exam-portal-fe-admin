@@ -1,5 +1,5 @@
 // styled component
-import Header from "@/organisms/XHeader/Header";
+import Header from "@/organisms/Header/Header";
 
 const DashboardTemplate = () => {
   return (
