@@ -22,7 +22,7 @@ import {
   TablePasswordEyeCloseIcon,
   TablePasswordEyeOpenIcon,
   TablePasswordIcon,
-  TablePasswrodCrossIcon,
+  TablePasswrodDotIcon,
   TableProfileIcon,
   TableSubjectIcon,
 } from "@/atoms/Icons";
@@ -35,8 +35,17 @@ import { userManagementTableHeadCells } from "@/utils/constants";
 
 // types & interface
 type userManagementPropType = {
-  data: object;
+  data: userData[];
   apiStatus: string;
+};
+
+type userData = {
+  email: string;
+  firstname: string;
+  lastname: string;
+  profilePic: string;
+  role: string;
+  access: string[];
 };
 
 const UserManagementTable = (props: userManagementPropType) => {
@@ -75,53 +84,65 @@ const UserManagementTable = (props: userManagementPropType) => {
             </>
           )}
           {apiStatus === "success" && (
-            <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <StyledTableCell>001</StyledTableCell>
-              <StyledTableCell>
-                <CellWrapper flexDir="column" alignItem="flex-start">
-                  <Text>Edward T. Jackson</Text>
-                  <StyledChip label="Question Setter" />
-                </CellWrapper>
-              </StyledTableCell>
-              <StyledTableCell>edward@yopmail.com</StyledTableCell>
-              <StyledTableCell>
-                <CellWrapper>
-                  {[...new Array(8)].map((_, i) => (
-                    <TablePasswrodCrossIcon key={i} w={16} h={16} />
-                  ))}
-                  <StyledIconButton>
-                    {true ? (
-                      <TablePasswordEyeOpenIcon />
-                    ) : (
-                      <TablePasswordEyeCloseIcon />
-                    )}
-                  </StyledIconButton>
-                </CellWrapper>
-              </StyledTableCell>
-              <StyledTableCell sx={{ maxWidth: "300px" }}>
-                <CellWrapper>
-                  {[...new Array(8)].map((_, i) => (
-                    <XChip label="All" ml="10px" mt="10px" />
-                  ))}
-                </CellWrapper>
-              </StyledTableCell>
+            <>
+              {data.map((user: userData, i) => {
+                let { email, firstname, lastname, role, access } = user;
 
-              <StyledTableCell>
-                <CellWrapper flexDir="column" alignItem="flex-start">
-                  <XButton startIcon={<EditButtonIcon />}>Edit</XButton>
-                  <XButton
-                    startIcon={<RemoveButtonIcon />}
-                    mt="10px"
-                    textColor="#fff"
-                    bgColor="#EF233C"
+                if (role === "question_setter") role = "Question Setter";
+                if (role === "question_verifier") role = "Question Verifier";
+                if (role === "examiner") role = "Examiner";
+
+                return (
+                  <TableRow
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    Remove
-                  </XButton>
-                </CellWrapper>
-              </StyledTableCell>
-            </TableRow>
+                    <StyledTableCell>{i + 1}</StyledTableCell>
+                    <StyledTableCell>
+                      <CellWrapper flexDir="column" alignItem="flex-start">
+                        <Text>{`${firstname} ${lastname}`}</Text>
+                        <StyledChip label={role} />
+                      </CellWrapper>
+                    </StyledTableCell>
+                    <StyledTableCell>{email}</StyledTableCell>
+                    <StyledTableCell>
+                      <CellWrapper>
+                        {[...new Array(9)].map((_, i) => (
+                          <TablePasswrodDotIcon key={i} w={16} h={16} />
+                        ))}
+                        <StyledIconButton>
+                          {true ? (
+                            <TablePasswordEyeOpenIcon />
+                          ) : (
+                            <TablePasswordEyeCloseIcon />
+                          )}
+                        </StyledIconButton>
+                      </CellWrapper>
+                    </StyledTableCell>
+                    <StyledTableCell sx={{ maxWidth: "300px" }}>
+                      <CellWrapper>
+                        {access.map((value: string, i) => (
+                          <XChip label={value} ml="10px" mt="10px" />
+                        ))}
+                      </CellWrapper>
+                    </StyledTableCell>
+
+                    <StyledTableCell>
+                      <CellWrapper flexDir="column" alignItem="flex-start">
+                        <XButton startIcon={<EditButtonIcon />}>Edit</XButton>
+                        <XButton
+                          startIcon={<RemoveButtonIcon />}
+                          mt="10px"
+                          textColor="#fff"
+                          bgColor="#EF233C"
+                        >
+                          Remove
+                        </XButton>
+                      </CellWrapper>
+                    </StyledTableCell>
+                  </TableRow>
+                );
+              })}
+            </>
           )}
         </StyledTableBody>
       </StyledTable>
