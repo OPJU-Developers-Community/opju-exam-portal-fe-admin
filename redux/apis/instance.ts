@@ -22,7 +22,7 @@ const apiInstance = () => {
 
 }
 
-const  baseApi = (options: any) => {
+const baseApi = (options: any) => {
     const api = apiInstance();
 
     return api({
