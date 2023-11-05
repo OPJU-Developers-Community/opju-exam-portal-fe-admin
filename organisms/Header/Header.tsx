@@ -41,7 +41,7 @@ const Header = () => {
       </LogoContainer>
       <MenuList>
         <Link href="/">
-          <MenuItem className={router.pathname === "/" ? "active" : ""}>
+          <MenuItem className={router.pathname === "/" ? "active" : ""} data-test="dashboard-route">
             Dashboard
           </MenuItem>
         </Link>

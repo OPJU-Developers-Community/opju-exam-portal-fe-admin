@@ -31,28 +31,30 @@ const Login = () => {
     password: "",
   });
 
-  const authState = useSelector((state: {auth: userState}) => state.auth);
+  const authState = useSelector((state: { auth: userState }) => state.auth);
 
-  const dispatch = useDispatch<any>()
+  const dispatch = useDispatch<any>();
 
   const route = useRouter();
 
   useEffect(() => {
-    if(authState.status === "success"){
+    if (authState.status === "success") {
       route.push("/");
     }
-  }, [authState.status])
+  }, [authState.status]);
 
-  const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setInputFiledValues((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
-  }
+  };
 
   const handleLogin = () => {
     dispatch(login(inputFieldValues));
-  }
+  };
   return (
     <LoginWrapper>
       <LeftSection>
@@ -68,6 +70,7 @@ const Login = () => {
             variant="standard"
             name="email"
             onChange={handleInputFieldChange}
+            data-test="login-input-field"
           />
           <InputField
             id="standard-basic-password"
@@ -76,15 +79,20 @@ const Login = () => {
             type="password"
             name="password"
             onChange={handleInputFieldChange}
+            data-test="login-password-field"
           />
           <motion.div
             whileTap={{
               scale: 0.99,
             }}
           >
-            <LoginButton variant="contained" onClick={handleLogin}>Login</LoginButton>
+            <LoginButton variant="contained" onClick={handleLogin} data-test="login-button">
+              Login
+            </LoginButton>
           </motion.div>
-          <CreateAccountBox href="/signup" underline="none">Create Account</CreateAccountBox>
+          <CreateAccountBox href="/signup" underline="none">
+            Create Account
+          </CreateAccountBox>
         </LoginBox>
       </RightSection>
     </LoginWrapper>
