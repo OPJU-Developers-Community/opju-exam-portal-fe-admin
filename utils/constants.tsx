@@ -83,3 +83,18 @@ export const userManagementTableHeadCells = [
     icon: <TableActionIcon />,
   },
 ];
+
+export const educationManagementTabs = [
+  {
+    query: "all",
+    value: "All",
+  },
+  {
+    query: "university",
+    value: "University",
+  },
+  {
+    query: "school",
+    value: "School",
+  },
+];

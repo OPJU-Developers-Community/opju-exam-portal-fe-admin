@@ -7,6 +7,7 @@ export interface XButtonProps {
   mt?: string;
   textColor?: string;
   bgColor?: string;
+  onClick?: () => void; 
 }
 
 const XButton = (props: XButtonProps) => {

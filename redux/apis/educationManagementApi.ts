@@ -3,12 +3,16 @@ import axios from "axios";
 
 // types
 import { educationManagementPayloadType } from "../slices/educationManagementSlice";
+import baseApi from "./instance";
 
-export const createEducationApi = (payload: educationManagementPayloadType) => {
-    const newPayload = {
-        ...payload.fieldData,
-        subjects: payload.subjects
-    }
-    
-    return axios.post(`${process.env.NEXT_PUBLIC_DEV_URL}/admin/education-management?type=${payload.queryType}`, newPayload)
-}
+export const educationManageMentApi = (
+  payload: educationManagementPayloadType
+) => {
+  const { params } = payload;
+
+  return baseApi({
+    method: "GET",
+    url: "/education-management",
+    params,
+  });
+};
