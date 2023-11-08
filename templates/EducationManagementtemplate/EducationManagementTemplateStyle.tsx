@@ -22,7 +22,8 @@ export const ControlContainer = styled("div")({
 
 export const StyledBox = styled("div")({
   marginTop: "3rem",
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "3rem", 
+  display: "grid",
+  gridTemplateColumns: "repeat(4, 1fr)",
+  gap: "1rem",
+  padding: "0px 0px 20px 0px",
 });

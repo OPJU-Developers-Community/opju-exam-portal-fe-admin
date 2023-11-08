@@ -1,4 +1,11 @@
-import { Box, CardContent, Link, Skeleton, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Link,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 import {
   ChipBox,
   CourseBox,
@@ -33,14 +40,10 @@ const EducationCard = (props: educationManagementPropTypes) => {
     <>
       {apiStatus === "loading" && (
         <>
-          {[...new Array(10)].map((index) => (
-            <Skeleton
-              key={index}
-              sx={{ bgcolor: "grey.900", opacity: "0.2" }}
-              variant="rectangular"
-              width={400}
-              height={300}
-            />
+          {[...new Array(data ? data.length : 8)].map((index) => (
+            <Card key={index}>
+              <Skeleton variant="rectangular" width={400} height={300} />
+            </Card>
           ))}
         </>
       )}
@@ -57,7 +60,7 @@ const EducationCard = (props: educationManagementPropTypes) => {
             };
 
             return (
-              <MainCard>
+              <MainCard key={i}>
                 <CardContent>
                   <Title>Program</Title>
                   <SubTitle>{program_name}</SubTitle>
@@ -80,11 +83,11 @@ const EducationCard = (props: educationManagementPropTypes) => {
                   </SubjectContainer>
                   <ChipBox>
                     {subjects
-                      .slice(0, showMore ? subjects.length : 3)
+                      .slice(0, showMore ? subjects.length : 2)
                       .map((item, index) => (
                         <StyledChip label={item} key={index} />
                       ))}
-                    {!showMore && subjects.length > 3 && (
+                    {!showMore && subjects.length > 2 && (
                       <ShowChipsButton onClick={handleClickShowMore}>
                         Show More
                       </ShowChipsButton>
