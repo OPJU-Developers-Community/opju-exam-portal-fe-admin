@@ -18,10 +18,10 @@ import XButton from "@/atoms/XButton/XButton";
 import { EditButtonIcon } from "@/atoms/Icons";
 
 // redux
+import { getEducationManagement } from "@/redux/slices/educationManagementSlice";
 
 // utils
 import { educationManagementTabs } from "@/utils/constants";
-import { getEducationManagement } from "@/redux/slices/educationManagementSlice";
 
 const EducationManagementTemplate = () => {
   const { data, apiStatus } = useSelector(
@@ -50,8 +50,13 @@ const EducationManagementTemplate = () => {
           Education Management
         </PageTitle>
         <ControlContainer>
-          <FilterTab tabs={educationManagementTabs} mxWidth="300px"/>
-          <XButton startIcon={<EditButtonIcon />} onClick={() => console.log("buton pressed")}>Add</XButton>
+          <FilterTab tabs={educationManagementTabs} mxWidth="300px" />
+          <XButton
+            startIcon={<EditButtonIcon />}
+            onClick={() => console.log("buton pressed")}
+          >
+            Add
+          </XButton>
         </ControlContainer>
         <StyledBox>
           <EducationCard data={data} apiStatus={apiStatus} />

@@ -20,10 +20,16 @@ export const ControlContainer = styled("div")({
   marginTop: "2rem",
 });
 
-export const StyledBox = styled("div")({
+export const StyledBox = styled("div")(({ theme }) => ({
   marginTop: "3rem",
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
   gap: "1rem",
   padding: "0px 0px 20px 0px",
-});
+  [theme.breakpoints.down("md")]:{
+    gridTemplateColumns: "repeat(2, 1fr)"
+  },
+  [theme.breakpoints.down("sm")]:{
+    gridTemplateColumns: "repeat(1, 1fr)"
+  }
+}));

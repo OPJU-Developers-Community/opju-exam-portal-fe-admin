@@ -1,11 +1,7 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  Link,
-  Skeleton,
-  Typography,
-} from "@mui/material";
+// lib and others
+import { MouseEventHandler, useState } from "react";
+
+// styled components
 import {
   ChipBox,
   CourseBox,
@@ -16,9 +12,16 @@ import {
   SubjectContainer,
   Title,
 } from "./EducationCardStyle";
+import {
+  CardContent,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 import { StyledChip } from "@/atoms/XChip/XChipStyle";
-import { MouseEvent, MouseEventHandler, useState } from "react";
 
+// utils
+
+// types & interface
 type educationManagementPropTypes = {
   data: userData[];
   apiStatus: string;
@@ -40,11 +43,70 @@ const EducationCard = (props: educationManagementPropTypes) => {
     <>
       {apiStatus === "loading" && (
         <>
-          {[...new Array(data ? data.length : 8)].map((index) => (
-            <Card key={index}>
-              <Skeleton variant="rectangular" width={400} height={300} />
-            </Card>
-          ))}
+          {[...new Array(6)].map((_, index) => {
+            return (
+              <>
+                <MainCard key={index}>
+                  <CardContent>
+                    <Title>
+                      <Typography variant="body1">
+                        <Skeleton animation="wave" width={100} />
+                      </Typography>
+                    </Title>
+                    <Typography variant="h3">
+                      <Skeleton animation="wave" width={150} />
+                    </Typography>
+                    <StyledBox>
+                      <CourseBox>
+                        <Title>
+                          <Typography variant="body1">
+                            <Skeleton animation="wave" width={50} />
+                          </Typography>
+                        </Title>
+                        <Typography variant="h3">
+                          <Skeleton animation="wave" width={60} />
+                        </Typography>
+                      </CourseBox>
+                      <CourseBox>
+                        <Title>
+                          <Typography variant="body1">
+                            <Skeleton animation="wave" width={50} />
+                          </Typography>
+                        </Title>
+                        <Typography variant="h3">
+                          <Skeleton animation="wave" width={60} />
+                        </Typography>
+                      </CourseBox>
+                      <CourseBox>
+                        <Title>
+                          <Typography variant="body1">
+                            <Skeleton animation="wave" width={50} />
+                          </Typography>
+                        </Title>
+                        <Typography variant="h3">
+                          <Skeleton animation="wave" width={60} />
+                        </Typography>
+                      </CourseBox>
+                    </StyledBox>
+                    <SubjectContainer>
+                      <Title>
+                        <Typography variant="body1">
+                          <Skeleton animation="wave" width={100} />
+                        </Typography>
+                      </Title>
+                    </SubjectContainer>
+                    <ChipBox>
+                      {[...new Array(4)].map((_, chipIndex) => (
+                        <Typography variant="body1">
+                          <Skeleton animation="wave" width={50} />
+                        </Typography>
+                      ))}
+                    </ChipBox>
+                  </CardContent>
+                </MainCard>
+              </>
+            );
+          })}
         </>
       )}
       {apiStatus === "success" && (
@@ -55,7 +117,9 @@ const EducationCard = (props: educationManagementPropTypes) => {
 
             const [showMore, setShowMore] = useState(false);
 
-            const handleClickShowMore = () => {
+            const handleClickShowMore: MouseEventHandler<
+              HTMLSpanElement
+            > = () => {
               setShowMore(true);
             };
 
@@ -83,11 +147,11 @@ const EducationCard = (props: educationManagementPropTypes) => {
                   </SubjectContainer>
                   <ChipBox>
                     {subjects
-                      .slice(0, showMore ? subjects.length : 2)
+                      .slice(0, showMore ? subjects.length : 3)
                       .map((item, index) => (
                         <StyledChip label={item} key={index} />
                       ))}
-                    {!showMore && subjects.length > 2 && (
+                    {!showMore && subjects.length > 3 && (
                       <ShowChipsButton onClick={handleClickShowMore}>
                         Show More
                       </ShowChipsButton>
