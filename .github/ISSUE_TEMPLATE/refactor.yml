@@ -1,0 +1,21 @@
+name: Refactor Request
+description: Performs changes to the code that neither fix a bug nor add a feature, such as improving code readability or restructuring code.
+title: "[Refactor]: "
+labels: ["refactor", "todo"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Refactor description
+      description: Describe what you want to refactor and why it's better than the previous version.
+      value: "Describe..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: note
+    attributes:
+      label: Checklist
+      description:
+      options:
+        - label: Before submitting a PR, execute any associated test cases to help diagnose issues more effectively.
+          required: true
