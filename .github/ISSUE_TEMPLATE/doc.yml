@@ -1,0 +1,13 @@
+name: Documentation Request
+description: Documentation request for API end points
+title: "[Doc]: "
+labels: ["doc", "todo"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Documentation description
+      description: A small description of the documentation.
+      value: "Describe..."
+    validations:
+      required: true
