@@ -1,0 +1,21 @@
+name: Feature Request
+description: Feature for the portal
+title: "[Feat]: "
+labels: ["feat", "todo"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature description
+      description: A small description of the feature.
+      value: "Describe..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: note
+    attributes:
+      label: Checklist
+      description:
+      options:
+        - label: Before submitting a PR, execute any associated test cases to help diagnose issues more effectively.
+          required: true
