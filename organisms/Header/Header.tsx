@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 // styled component
 import { DownArrowIcon, Logo, UpArrowIcon } from "@/atoms/Icons";
@@ -16,6 +17,9 @@ import {
 import ProfileMenu from "@/molecules/ProfileMenu/ProfileMenu";
 import { Avatar, Box } from "@mui/material";
 
+// actions
+import { logOut } from "@/redux/slices/authSlice";
+
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -25,8 +29,12 @@ const Header = () => {
     setAnchorEl(event.currentTarget);
   };
 
+  const dispatch = useDispatch();
+
   const handleClose = () => {
     setAnchorEl(null);
+    dispatch(logOut());
+    router.push("/login");
   };
 
   return (
@@ -41,7 +49,10 @@ const Header = () => {
       </LogoContainer>
       <MenuList>
         <Link href="/">
-          <MenuItem className={router.pathname === "/" ? "active" : ""} data-test="dashboard-route">
+          <MenuItem
+            className={router.pathname === "/" ? "active" : ""}
+            data-test="dashboard-route"
+          >
             Dashboard
           </MenuItem>
         </Link>
