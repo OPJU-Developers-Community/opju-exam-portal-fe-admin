@@ -39,7 +39,6 @@ export const login = createAsyncThunk(
             return response.data
         }catch(error){
             const axiosError = error as AxiosError;
-
             if(axiosError.response){
                 return thunkApi.rejectWithValue(axiosError.response.data);
             }
@@ -88,7 +87,7 @@ const authSlice = createSlice({
             state.data = action.payload?.response?.data;
             state.status = "success";
             state.message = action.payload?.message
-            localStorage.setItem("access_token", JSON.stringify(action.payload?.response?.data?.token))           
+            localStorage.setItem("access_token", JSON.stringify(action.payload?.data?.token))           
         });
         builder.addCase(login.rejected, (state, action: any) => {
             state.status = "failed";
