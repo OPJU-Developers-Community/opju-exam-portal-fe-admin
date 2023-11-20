@@ -1,11 +1,12 @@
 // lib & others
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // styled component
 import FilterTab from "@/molecules/FilterTab/FilterTab";
 import Header from "@/organisms/Header/Header";
+import AddEducationModal from "@/organisms/AddEducationModal/AddEducationModal";
 import {
   ControlContainer,
   PageTitle,
@@ -24,6 +25,10 @@ import { getEducationManagement } from "@/redux/slices/educationManagementSlice"
 import { educationManagementTabs } from "@/utils/constants";
 
 const EducationManagementTemplate = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const { data, apiStatus } = useSelector(
     (state: any) => state.educaionManangement
   );
@@ -51,10 +56,7 @@ const EducationManagementTemplate = () => {
         </PageTitle>
         <ControlContainer>
           <FilterTab tabs={educationManagementTabs} mxWidth="300px" />
-          <XButton
-            startIcon={<EditButtonIcon />}
-            onClick={() => console.log("buton pressed")}
-          >
+          <XButton startIcon={<EditButtonIcon />} onClick={handleOpen}>
             Add
           </XButton>
         </ControlContainer>
@@ -62,6 +64,7 @@ const EducationManagementTemplate = () => {
           <EducationCard data={data} apiStatus={apiStatus} />
         </StyledBox>
       </StyledContainer>
+      <AddEducationModal open={open} handleClose={handleClose} />
     </Wrapper>
   );
 };
