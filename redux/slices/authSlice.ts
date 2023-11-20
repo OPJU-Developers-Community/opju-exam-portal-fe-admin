@@ -87,7 +87,9 @@ const authSlice = createSlice({
             state.data = action.payload?.response?.data;
             state.status = "success";
             state.message = action.payload?.message
-            localStorage.setItem("access_token", JSON.stringify(action.payload?.data?.token))           
+            if(action.payload?.data?.token) {
+                localStorage.setItem("access_token", JSON.stringify(action.payload?.data?.token))           
+            }
         });
         builder.addCase(login.rejected, (state, action: any) => {
             state.status = "failed";
