@@ -6,6 +6,7 @@ import {
   TableProfileIcon,
   TableSubjectIcon,
 } from "@/atoms/Icons";
+import managementSvg from "@/public/management.svg";
 
 type navLinkType = {
   name: string;
@@ -81,5 +82,26 @@ export const userManagementTableHeadCells = [
   {
     label: "Actions",
     icon: <TableActionIcon />,
+  },
+];
+
+export const AuthPageAd = [
+  {
+    title: "Empowering Academic Excellence",
+    description:
+      "Effortlessly manage Assessment Coordinators, Exam Verifiers, and Students. Secure, collaborative user administration for academic success.",
+    img: "",
+  },
+  {
+    title: "Elevate Learning, Simplify Administration",
+    description:
+      "Simplify curriculum planning, resource allocation, and assessment processes. A smarter, efficient tool for an elevated learning experience.",
+    img: "",
+  },
+  {
+    title: "Insights at a Glance",
+    description:
+      "Real-time data, comprehensive reports, informed decision-making. The powerhouse for shaping the future of education.",
+    img: managementSvg,
   },
 ];

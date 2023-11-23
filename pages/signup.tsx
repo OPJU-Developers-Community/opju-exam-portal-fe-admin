@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 // components
-import Signup from "@/components/Signup/Signup";
+import Signup from "@/templates/Signup/Signup";
 
 const SignupPage = () => {
   const router = useRouter();

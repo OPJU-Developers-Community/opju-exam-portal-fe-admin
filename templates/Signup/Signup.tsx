@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 // thunk and slices
 import { signUp, userState } from "@/redux/slices/authSlice";
@@ -13,6 +15,7 @@ import { signupType } from "@/types/auth.type";
 
 // styles
 import {
+  FlexContainer,
   InputField,
   LeftSection,
   RightSection,
@@ -20,9 +23,10 @@ import {
   SignupWrapper,
   SigupBox,
   SubTitle,
+  Text,
   Title,
 } from "./SignupStyle";
-import managementSvg from "@/public/management.svg";
+import { AuthPageAd } from "@/utils/constants";
 
 const Signup = () => {
   const [inputFieldValues, setInputFiledValues] = useState<signupType>({
@@ -59,11 +63,44 @@ const Signup = () => {
   return (
     <SignupWrapper>
       <LeftSection>
-        <Image src={managementSvg} alt="management-svg" />
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2300,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+        >
+          {AuthPageAd.map((slideData, i) => {
+            const { title, description, img } = slideData;
+
+            return (
+              <SwiperSlide>
+                <FlexContainer>
+                  <div>
+                    <Text fontSize="2.3rem" fontWeight={600}>
+                      {title}
+                    </Text>
+                    <Text
+                      fontSize="1rem"
+                      marginBottom={5}
+                      fontWeight={400}
+                      color="#F3F4F6"
+                    >
+                      {description}
+                    </Text>
+                  </div>
+                  <Image height={400} src={img} alt="management-svg" />
+                </FlexContainer>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </LeftSection>
       <RightSection>
         <SigupBox>
-          <Title>Create Account</Title>
+          <Title>Create new account</Title>
           <SubTitle>Seamless Access for Administrators</SubTitle>
           <InputField
             id="standard-basic-name"

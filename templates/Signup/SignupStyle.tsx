@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const SignupWrapper = styled("div")({
@@ -6,15 +6,29 @@ export const SignupWrapper = styled("div")({
   height: "100vh",
 });
 
+export const FlexContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 export const LeftSection = styled("div")({
-  flex: 1,
+  width: "30%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  background: "#4361ee",
+  padding: "0 3rem",
+});
+
+export const Text = styled(Typography)({
+  color: "#f8f9fa",
+  fontFamily: "Poppins, sans-serif",
 });
 
 export const RightSection = styled("div")({
-  flex: 2,
+  width: "70%",
   backgroundColor: "#f8f9fa",
   display: "flex",
   alignItems: "center",
