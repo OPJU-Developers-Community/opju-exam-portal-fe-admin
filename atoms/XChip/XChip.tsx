@@ -7,6 +7,7 @@ type XChipPropType = {
   mt?: string;
   bgColor?: string;
   textColor?: string;
+  onDelete: () => void
 };
 
 const XChip = (props: XChipPropType) => {

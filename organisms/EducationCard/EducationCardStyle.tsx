@@ -8,7 +8,7 @@ export const MainCard = styled(Card)({
   border: "1px solid #E5E7EB",
   background: "#FFF",
   boxShadow:
-    "0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)",
+    "0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10)",
 });
 
 export const StyledBox = styled("div")({
@@ -32,7 +32,7 @@ export const SubTitle = styled(Typography)({
   fontFamily: "Poppins, sans-serif",
   color: "#000",
   fontSize: "1.5rem",
-  fontWeight: "700",
+  // fontWeight: "600",
 });
 
 export const SubjectContainer = styled("div")({
