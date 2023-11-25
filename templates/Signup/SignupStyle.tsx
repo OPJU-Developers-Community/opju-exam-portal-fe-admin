@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, OutlinedInput, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const SignupWrapper = styled("div")({
@@ -49,52 +49,23 @@ export const Title = styled("h1")({
 });
 
 export const SubTitle = styled("h3")({
-  margin: "1rem 0",
+  margin: "0rem 0",
   padding: 0,
   color: "#343a40",
   fontWeight: 500,
 });
 
-export const InputField = styled(TextField)({
-  width: "100%",
-  margin: "1.13rem 0",
-
-  "& .MuiFormLabel-root": {
-    fontFamily: "Nunito",
-    fontWeight: 500,
-    fontSize: 16,
-
-    "&.Mui-focused": {
-      color: "#4361ee",
-    },
-  },
-
-  "& .MuiInputBase-root:after": {
-    borderBottom: "2px solid #4361ee", // Remove the underline when the input is focused
-  },
-
-  "& .MuiInputBase-root:hover": {
-    borderBottom: "none", // Remove the underline when the input is focused
-  },
-
-  "& .MuiInputBase-input": {
-    fontFamily: "Nunito",
-    fontWeight: 500,
-    fontSize: 16,
-  },
-});
-
 export const SignupButton = styled(Button)({
   width: "100%",
-  margin: "1rem 0",
-  padding: "0.65rem 0",
+  margin: "0.5rem 0",
+  padding: "10px 20px",
   boxShadow: "none",
   background: "#4361ee",
-  textTransform: "capitalize",
-  fontFamily: "Nunito",
-  fontSize: 16,
+  fontFamily: "Poppins, sans-serif",
+  fontSize: "16px",
   fontWeight: 500,
-  transition: "transform 200ms linear",
+  borderRadius: "8px",
+  textTransform: "none",
 
   "&.MuiButtonBase-root:hover": {
     backgroundColor: "#4361ee",

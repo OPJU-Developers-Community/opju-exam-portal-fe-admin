@@ -16,7 +16,6 @@ import { signupType } from "@/types/auth.type";
 // styles
 import {
   FlexContainer,
-  InputField,
   LeftSection,
   RightSection,
   SignupButton,
@@ -26,6 +25,17 @@ import {
   Text,
   Title,
 } from "./SignupStyle";
+import XTextField from "@/atoms/XInputLabel/XInputLabel";
+
+import {
+  InputEndClearIcon,
+  InputEndEyeCloseIcon,
+  InputEndEyeIcon,
+  InputStartEmailIcon,
+  InputStartPasswordIcon,
+  InputStartUserIcon,
+} from "@/atoms/Icons";
+
 import { AuthPageAd } from "@/utils/constants";
 
 const Signup = () => {
@@ -102,27 +112,34 @@ const Signup = () => {
         <SigupBox>
           <Title>Create new account</Title>
           <SubTitle>Seamless Access for Administrators</SubTitle>
-          <InputField
-            id="standard-basic-name"
-            label="Name"
-            variant="standard"
+          <XTextField
+            id="name"
             name="username"
+            label="Your name"
+            placeholder="Enter your name"
+            startIcon={<InputStartUserIcon />}
+            endIcon={<InputEndClearIcon />}
             onChange={handleInputFieldChange}
+            styles={{ margin: "1.5rem 0 0 0" }}
           />
-          <InputField
-            id="standard-basic-email"
-            label="Email"
-            variant="standard"
+          <XTextField
+            id="email"
             name="email"
+            label="Email"
+            placeholder="Enter your Email"
+            startIcon={<InputStartEmailIcon />}
+            endIcon={<InputEndClearIcon />}
             onChange={handleInputFieldChange}
           />
-          <InputField
-            id="standard-basic-password"
-            label="Password"
-            variant="standard"
-            type="password"
+          <XTextField
+            id="password"
             name="password"
+            label="Password"
+            placeholder="Enter your Password"
+            startIcon={<InputStartPasswordIcon />}
+            endIcon={false ? <InputEndEyeCloseIcon /> : <InputEndEyeIcon />}
             onChange={handleInputFieldChange}
+            showPassword={false}
           />
           <motion.div
             whileTap={{
