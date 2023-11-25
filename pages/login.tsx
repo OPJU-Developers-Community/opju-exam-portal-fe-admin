@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 // components
-import Login from "@/components/Login/Login";
+import Login from "@/templates/Login/Login";
 
 const LoginPage = () => {
   const router = useRouter();

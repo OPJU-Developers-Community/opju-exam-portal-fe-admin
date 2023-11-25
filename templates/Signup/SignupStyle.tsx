@@ -39,6 +39,7 @@ export const SigupBox = styled("div")({
   width: "100%",
   maxWidth: "400px",
   margin: "0 0 0 5rem",
+  border: "1px solid black"
 });
 
 export const Title = styled("h1")({
