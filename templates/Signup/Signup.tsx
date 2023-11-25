@@ -36,7 +36,7 @@ import {
   InputStartUserIcon,
 } from "@/atoms/Icons";
 
-import { AuthPageAd } from "@/utils/constants";
+import { AuthPageAd, defaultErrorMessage } from "@/utils/constants";
 import { errorNotify, successNotify } from "@/utils/notify";
 
 const Signup = () => {
@@ -59,7 +59,7 @@ const Signup = () => {
     }
 
     if (authState.status === "failed") {
-      errorNotify({ message: authState.message });
+      errorNotify({ message: authState.message || defaultErrorMessage });
     }
   }, [authState.status]);
 
