@@ -120,7 +120,7 @@ const Signup = () => {
           <SubTitle>Seamless Access for Administrators</SubTitle>
           <XTextField
             id="name"
-            name="username"
+            name="name"
             label="Your name"
             placeholder="Enter your name"
             startIcon={<InputStartUserIcon />}
