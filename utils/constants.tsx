@@ -105,3 +105,5 @@ export const AuthPageAd = [
     img: managementSvg,
   },
 ];
+
+export const defaultErrorMessage = "Something went wrong";

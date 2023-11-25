@@ -4,5 +4,5 @@ export interface loginType {
 }
 
 export interface signupType extends loginType{
-    username: string,
+    name: string,
 }

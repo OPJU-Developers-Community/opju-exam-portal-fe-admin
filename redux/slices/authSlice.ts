@@ -16,18 +16,14 @@ export interface userState {
 
 // thunk
 export const signUp = createAsyncThunk(
-    "signup",
-    async (payload: signupType, thunkAPI) => {
-        try {
-            const response = await signupApi(payload) 
-            return response.data
-        }catch(error) {
-            const axiosError = error as AxiosError;
+    "signUp",
+    async (payload: signupType, thunkAPI) => {         
 
-            if(axiosError.response) {
-                return thunkAPI.rejectWithValue(axiosError.response.data);
-            }
-        }
+        const response = await signupApi(payload);
+        
+        if(response.error) return thunkAPI.rejectWithValue(response);
+        
+        return response;
     }
 )
 
@@ -87,9 +83,7 @@ const authSlice = createSlice({
             state.data = action.payload?.response?.data;
             state.status = "success";
             state.message = action.payload?.message
-            if(action.payload?.data?.token) {
-                localStorage.setItem("access_token", JSON.stringify(action.payload?.data?.token))           
-            }
+            localStorage.setItem("access_token", JSON.stringify(action.payload?.data?.token))           
         });
         builder.addCase(login.rejected, (state, action: any) => {
             state.status = "failed";

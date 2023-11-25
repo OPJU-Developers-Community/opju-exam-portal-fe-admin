@@ -1,9 +1,18 @@
 import { Box, InputAdornment } from "@mui/material";
 import { StyledInputField, StyledInputLable } from "./XInputLabelStyle";
+import { useState } from "react";
 
 const XTextField = (props: any) => {
-  const { label, startIcon, endIcon, styles, showPassword, ...otherProp } =
-    props;
+  const {
+    label,
+    startIcon,
+    endIcon,
+    styles,
+    showPassword,
+    isPasswordField,
+    ...otherProp
+  } = props;
+
   return (
     <Box sx={...styles}>
       <StyledInputLable>{label}</StyledInputLable>
@@ -19,7 +28,7 @@ const XTextField = (props: any) => {
             <InputAdornment position="end">{endIcon}</InputAdornment>
           ) : null
         }
-        type={showPassword ? "text" : "password"}
+        type={showPassword || !isPasswordField ? "text" : "password"}
         {...otherProp}
       />
     </Box>

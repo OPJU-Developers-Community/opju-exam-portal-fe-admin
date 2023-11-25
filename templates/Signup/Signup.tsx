@@ -37,10 +37,11 @@ import {
 } from "@/atoms/Icons";
 
 import { AuthPageAd } from "@/utils/constants";
+import { errorNotify, successNotify } from "@/utils/notify";
 
 const Signup = () => {
   const [inputFieldValues, setInputFiledValues] = useState<signupType>({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -53,7 +54,12 @@ const Signup = () => {
 
   useEffect(() => {
     if (authState.status === "success") {
+      successNotify({ message: authState.message });
       route.push("/");
+    }
+
+    if (authState.status === "failed") {
+      errorNotify({ message: authState.message });
     }
   }, [authState.status]);
 
@@ -139,6 +145,7 @@ const Signup = () => {
             startIcon={<InputStartPasswordIcon />}
             endIcon={false ? <InputEndEyeCloseIcon /> : <InputEndEyeIcon />}
             onChange={handleInputFieldChange}
+            isPasswordField={true}
             showPassword={false}
           />
           <motion.div
