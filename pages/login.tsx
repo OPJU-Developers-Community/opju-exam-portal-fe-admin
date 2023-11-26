@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 // components
-import Login from "@/templates/Login/Login";
+import LoginTemplate from "@/templates/LoginTemplate/LoginTemplate";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -20,7 +20,7 @@ const LoginPage = () => {
       <Head>
         <title>OPJU Exam Portal || login</title>
       </Head>
-      <Login />
+      <LoginTemplate />
     </>
   );
 };

@@ -6,7 +6,7 @@ import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "@mui/material";
+import { Box, Link } from "@mui/material";
 
 // thunk and slices
 import { login, userState } from "@/redux/slices/authSlice";
@@ -25,7 +25,7 @@ import {
   SubTitle,
   Text,
   Title,
-} from "./LoginStyle";
+} from "./LoginTemplateStyle";
 import XTextField from "@/atoms/XInputLabel/XInputLabel";
 import {
   InputEndClearIcon,
@@ -34,12 +34,13 @@ import {
   InputStartEmailIcon,
   InputStartPasswordIcon,
 } from "@/atoms/Icons";
+import adminImg from "@/public/adminImg.svg";
 
 // utils
 import { AuthPageAd, defaultErrorMessage } from "@/utils/constants";
 import { errorNotify, successNotify } from "@/utils/notify";
 
-const Login = () => {
+const LoginTemplate = () => {
   const [inputFieldValues, setInputFiledValues] = useState<loginType>({
     email: "",
     password: "",
@@ -105,8 +106,8 @@ const Login = () => {
                       {description}
                     </Text>
                   </div>
-                  <Image height={400} src={img} alt="management-svg" />
                 </FlexContainer>
+                <Image height={400} src={img} alt="management-svg" />
               </SwiperSlide>
             );
           })}
@@ -160,4 +161,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginTemplate;
