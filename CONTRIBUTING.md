@@ -89,3 +89,134 @@ refactor(api): optimize database queries for better performance
 ```
 
 Adhering to these guidelines ensures a clear and structured Git history, making it easier for collaborators to understand and contribute to the project.
+
+### Rules
+
+To maintain a clean and efficient development process, please follow these guidelines when contributing to the project:
+
+1. **Create Small, Focused Commits:**
+
+   - **Bad Example:**
+     ```
+     git commit -m "Update homepage and refactor API"
+     ```
+
+   - **Good Example:**
+     ```
+     git commit -m "feat(homepage): add new banner component"
+     ```
+
+2. **Limit File Changes:**
+
+  - Each commit should introduce the minimum necessary changes to accomplish its goal. 
+  - Avoid making changes to files that are beyond the scope of your current task.
+
+   - **Bad Example:**
+     - Changing styling in unrelated files while fixing a bug.
+
+   - **Good Example:**
+     - Making changes only to the specific file related to the bug fix.
+
+3. **Branch Naming:**
+  
+  - Use descriptive branch names that reflect the purpose of the changes.
+
+   - **Bad Example:**
+     ```
+     git checkout -b feature
+     ```
+
+   - **Good Example:**
+     ```
+     git checkout -b feat-user-authentication
+     ```
+
+4. **Commit Message Guidelines:**
+   
+   - **Bad Example:**
+     ```
+     git commit -m "update"
+     ```
+
+   - **Good Example:**
+     ```
+     git commit -m "fix(login): resolve issue with incorrect error messages"
+     ```
+
+5. **Pull Requests (PRs):**
+
+  - The title of the pull request should be in the format of `<type>: <subject>` just like your issue title.
+
+   - **Bad Example:**
+     ```
+     updated broken link in profile page
+     ```
+
+   - **Good Example:**
+     ```
+     fix: updated broken link in profile page
+     ```
+
+6. **PR Review:**
+  
+  - Your PR will be review within 2-3 days by the project admin.
+
+7. **Documentation:**
+
+  - Update relevant documentation for the changes you introduce.
+  - Ensure that README.md is kept up to date.
+
+   - **Bad Example:**
+     - Introducing a new feature without updating relevant documentation.
+
+   - **Good Example:**
+     - Adding documentation for a new API endpoint.
+
+8. **Creating Issues:**
+
+   - **Bad Example:**
+     ```
+     Found a bug.
+     ```
+
+   - **Good Example:**
+     ```
+     ## Bug Report
+
+     ### Issue Description
+     [Description of the issue]
+
+     ### Steps to Reproduce
+     [Detailed steps to reproduce the issue]
+
+     ### Expected Behavior
+     [What you expect to happen]
+
+     ### Actual Behavior
+     [What actually happens]
+
+     [Additional context or screenshots if applicable]
+     ```
+
+9. **Resolving Conflicts:**
+
+  - Before merging, resolve any conflicts that arise between your branch and the main branch.
+
+   - **Bad Example:**
+     - Merging without resolving conflicts.
+
+   - **Good Example:**
+     - Resolving conflicts between your branch and the main branch before merging.
+
+10. **Testing:**
+
+  - Ensure that your changes pass existing tests.
+  - Write new tests for new features or changes whenever applicable.
+
+    - **Bad Example:**
+      - Not testing changes or assuming they work.
+
+    - **Good Example:**
+      - Writing tests for a new API endpoint and ensuring they pass.
+
+Adhering to these guidelines helps maintain a collaborative and efficient development environment. If you have any questions or need clarification, feel free to reach out to project maintainers.
