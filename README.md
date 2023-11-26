@@ -42,7 +42,7 @@ Our project follows the Atomic Design Pattern, a methodology that helps in organ
 
 ## Contribution Guidelines
 
-We welcome contributions from the community! If you're interested in contributing to the project, please follow our [Contributing guide](#).
+We welcome contributions from the community! If you're interested in contributing to the project, please follow our [Contributing guide](https://github.com/OPJU-Developers-Community/opju-exam-portal-fe-admin/blob/main/CONTRIBUTING.md).
 
 `Remember, Effective communication and collaboration are the cornerstones of being a valuable team member."`
 
