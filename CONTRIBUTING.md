@@ -40,3 +40,52 @@ Create an issue `Request for .env file`. And add it to your .env file. (Backend 
 ### 4. Run the dev 
 
 `npm run dev`
+
+## Writing Good Commit Messages
+
+Maintaining a clean and informative Git history is crucial for collaboration and project understanding. Follow these guidelines to write meaningful and effective commit messages.
+
+### Commit Message Format
+
+A commit message should consist of a concise subject line, an optional body, and a footer.
+
+`<type>(<scope>): <subject>`
+
+#### Subject Line
+
+- `feat` A new feature for the user or a significant change.
+- `fix` A bug fix.
+- `docs` Documentation changes.
+- `style` Code style changes (formatting, etc.).
+- `refactor` Code changes that are neither fixes nor features.
+- `test` Adding or modifying tests.
+- `chore` Routine tasks, maintenance, or tooling changes.
+
+#### Examples
+
+Adding a New Feature:
+```
+feat(user-management): add the ability to reset passwords
+```
+
+Fixing a Bug:
+```
+fix(login): resolve an issue with incorrect error messages
+```
+
+Documentation Update:
+```
+docs(readme): add a section on commit message guidelines
+```
+
+Code Style Changes
+```
+style: format code according to the style guide
+```
+
+Refactoring Code:
+```
+refactor(api): optimize database queries for better performance
+```
+
+Adhering to these guidelines ensures a clear and structured Git history, making it easier for collaborators to understand and contribute to the project.
