@@ -1,4 +1,8 @@
 import {
+  IconBuddyDashboardIcon,
+  IconBuddyEducationManagementIcon,
+  IconBuddyReportIcon,
+  IconBuddyUserManagementIcon,
   SerialNoIcon,
   TableActionIcon,
   TableEmailIcon,
@@ -11,24 +15,29 @@ import managementSvg from "@/public/management.svg";
 type navLinkType = {
   name: string;
   path: string;
+  icon: any;
 };
 
 export const navLinks: navLinkType[] = [
   {
-    name: "Home",
+    name: "Dashboard",
     path: "/",
+    icon: <IconBuddyDashboardIcon />,
   },
   {
     name: "User management",
     path: "/user-management",
+    icon: <IconBuddyUserManagementIcon />,
   },
   {
     name: "Education management",
     path: "/education-management",
+    icon: <IconBuddyEducationManagementIcon />,
   },
   {
     name: "Report",
     path: "/report",
+    icon: <IconBuddyReportIcon />,
   },
 ];
 
