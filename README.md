@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Admin Portal - Online Exam Platform
 
-## Getting Started
+![Admin Portal preview](https://github.com/OPJU-Developers-Community/opju-exam-portal-fe-admin/assets/77252075/afdd9735-5adc-4ec2-9f1f-1f18f243e61f)
 
-First, run the development server:
+Welcome to the Admin portal of the Online Exam Platform, Your central command for managing the various aspects of our online examination system. The Admin portal is the heart of our platform. By putting control in one place, it simplifies the administrative process, making online exams more organized, secure, and effective for everyone involved. This central hub allows seamless management of Assessment Coordinators, Education, and Students and provides valuable insights through a comprehensive Dashboard.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [User Flow](#user-flow)
+- [Folder Structure](#folder-structure)
+- [Contribution Guidelines](#contribution-guidelines)
+- [Code of Conduct](#code-of-conduct)
+- [License](#license)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## User Flow
+![user-flow-diagram](https://github.com/OPJU-Developers-Community/opju-exam-portal-fe-admin/assets/77252075/2b38c77f-54c7-44d2-a068-47ee880afa95)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Folder Structure
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Our project follows the Atomic Design Pattern, a methodology that helps in organizing code in a scalable and maintainable way. The structure is designed to promote reusability and readability, making it easier for developers to navigate and contribute to the project.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- `Atoms` The smallest, indivisible components of the system. Examples include buttons, input fields, and labels.
 
-## Learn More
+- `Molecules` Combinations of atoms that form more complex components. For instance, a form consisting of input fields, labels, and a submit button.
 
-To learn more about Next.js, take a look at the following resources:
+- `Organisms` Larger components that combine molecules and/or atoms to create distinct sections of the user interface, such as a navigation bar or a sidebar.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `Templates` Complete structures that bring together organisms to form entire pages or layouts.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `Pages` Instances of templates with actual content and data.
 
-## Deploy on Vercel
+**Other folders**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `redux`
+    - `apis` API-related files.
+    - `slices` Redux slices (using Redux Toolkit).
+    - `rootReducer.ts` The root reducer combining all other reducers.
+    - `store.ts` The Redux store configuration.
+- `types` TypeScript type definitions.
+- `utils` Utility functions and helper modules.
+- `hoc` Higher Order Components.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contribution Guidelines
+
+We welcome contributions from the community! If you're interested in contributing to the project, please follow our [Contributing guide](https://github.com/OPJU-Developers-Community/opju-exam-portal-fe-admin/blob/main/CONTRIBUTING.md).
+
+`Remember, Effective communication and collaboration are the cornerstones of being a valuable team member."`
+
+
