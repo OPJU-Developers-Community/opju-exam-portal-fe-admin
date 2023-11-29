@@ -6,20 +6,32 @@ import { AxiosError } from "axios";
 import { loginType, signupType } from "@/types/auth.type";
 import { defaultErrorMessage } from "@/utils/constants";
 
-
 export const signupApi = async (payload: signupType) => {
-    try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_DEV_URL}/signup`, payload)
-        return response.data;
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_DEV_URL}/signup`,
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    const { data }: any = axiosError.response;
 
-    }catch(error) {
-        const axiosError = error as AxiosError;  
-        const {data}:any = axiosError.response;
+    return { error: true, message: data.message || defaultErrorMessage };
+  }
+};
 
-        return {error: true,  message: data.message || defaultErrorMessage}
-    }
-}
+export const loginApi = async (payload: loginType) => {
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_DEV_URL}/login`,
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    const { data }: any = axiosError.response;
 
-export const loginApi = (payload: loginType) => {
-    return axios.post(`${process.env.NEXT_PUBLIC_DEV_URL}/login`, payload)
-}
+    return { error: true, message: data.message || defaultErrorMessage };
+  }
+};
