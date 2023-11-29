@@ -1,7 +1,7 @@
 // lib & others
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 // styled component
 import FilterTab from "@/molecules/FilterTab/FilterTab";
@@ -12,21 +12,22 @@ import {
   StyledBox,
   StyledContainer,
   Wrapper,
-} from "./UserManagementTemplateStyle";
-import UserManagementTable from "@/organisms/UserManagementTable/UserManagementTable";
+} from "./EducationManagementTemplateStyle";
+import EducationCard from "@/organisms/EducationCard/EducationCard";
 import XButton from "@/atoms/XButton/XButton";
 import { EditButtonIcon } from "@/atoms/Icons";
 
 // redux
-import { getUserManagement } from "@/redux/slices/userManagementSlice";
+import { getEducationManagement } from "@/redux/slices/educationManagementSlice";
 
 // utils
-import { userManagementTabs } from "@/utils/constants";
+import { educationManagementTabs } from "@/utils/constants";
 
-const UserManagementTemplate = () => {
-  const { data, apiStatus } = useSelector((state: any) => state.userManagement);
+const EducationManagementTemplate = () => {
+  const { data, apiStatus } = useSelector(
+    (state: any) => state.educaionManangement
+  );
   const dispatch = useDispatch<any>();
-
   const router = useRouter();
   const {
     query: { tab = "all" },
@@ -34,31 +35,35 @@ const UserManagementTemplate = () => {
 
   useEffect(() => {
     dispatch(
-      getUserManagement({
+      getEducationManagement({
         params: {
           type: tab,
         },
       })
     );
   }, [tab]);
-
   return (
     <Wrapper>
       <Header />
       <StyledContainer>
         <PageTitle variant="h4" fontWeight={600} marginBottom={3}>
-          User Management
+          Education Management
         </PageTitle>
         <ControlContainer>
-          <FilterTab tabs={userManagementTabs} mxWidth="" />
-          <XButton startIcon={<EditButtonIcon />} onClick={() => console.log("buton pressed")}>Add</XButton>
+          <FilterTab tabs={educationManagementTabs} mxWidth="300px" />
+          <XButton
+            startIcon={<EditButtonIcon />}
+            onClick={() => console.log("buton pressed")}
+          >
+            Add
+          </XButton>
         </ControlContainer>
         <StyledBox>
-          <UserManagementTable data={data} apiStatus={apiStatus} />
+          <EducationCard data={data} apiStatus={apiStatus} />
         </StyledBox>
       </StyledContainer>
     </Wrapper>
   );
 };
 
-export default UserManagementTemplate;
+export default EducationManagementTemplate;

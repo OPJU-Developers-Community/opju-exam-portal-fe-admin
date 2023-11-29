@@ -94,6 +94,21 @@ export const userManagementTableHeadCells = [
   },
 ];
 
+export const educationManagementTabs = [
+  {
+    query: "all",
+    value: "All",
+  },
+  {
+    query: "university",
+    value: "University",
+  },
+  {
+    query: "school",
+    value: "School",
+  },
+];
+
 export const AuthPageAd = [
   {
     title: "Empowering Academic Excellence",

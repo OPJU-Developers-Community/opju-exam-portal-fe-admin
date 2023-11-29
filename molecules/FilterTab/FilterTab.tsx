@@ -8,6 +8,7 @@ import { FilterWrapper, StyledTab } from "./FilterTabStyle";
 // types & interface
 type FilterTabProp = {
   tabs: tabType[];
+  mxWidth: string,
 };
 
 type tabType = {
@@ -30,7 +31,7 @@ const FilterTab = (props: FilterTabProp) => {
   };
 
   return (
-    <FilterWrapper>
+    <FilterWrapper {...props}>
       {tabs.map((tab, _) => {
         const { value, query } = tab;
 
