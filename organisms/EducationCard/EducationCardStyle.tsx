@@ -2,12 +2,13 @@ import { Card, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const MainCard = styled(Card)({
-  background: "#f9f9f9",
-  borderRadius: "13px",
-  border: "1px solid rgba(0, 0, 0, 0.10)",
-  boxShadow: "none",
   width: "100%",
   height: "100%",
+  borderRadius: "8px",
+  border: "1px solid #E5E7EB",
+  background: "#FFF",
+  boxShadow:
+    "0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10)",
 });
 
 export const StyledBox = styled("div")({
@@ -30,8 +31,8 @@ export const Title = styled(Typography)({
 export const SubTitle = styled(Typography)({
   fontFamily: "Poppins, sans-serif",
   color: "#000",
-  fontSize: "1.2rem",
-  fontWeight: "400",
+  fontSize: "1.5rem",
+  // fontWeight: "600",
 });
 
 export const SubjectContainer = styled("div")({
@@ -43,10 +44,10 @@ export const ChipBox = styled("div")({
   flexWrap: "wrap",
   gap: ".75rem",
   alignItems: "center",
+  marginTop: ".5rem"
 });
 
 export const ShowChipsButton = styled(Typography)({
   cursor: "pointer",
-  textDecoration: "underline",
   color: "#3A86FF",
 });

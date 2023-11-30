@@ -25,8 +25,6 @@ export const getEducationManagement = createAsyncThunk(
   async (payload: educationManagementPayloadType, thunkAPI) => {
     try {
       const response = await educationManageMentApi(payload);
-
-      console.log(response);
       return response.data;
     } catch (error) {
       const axiosError = error as AxiosError;

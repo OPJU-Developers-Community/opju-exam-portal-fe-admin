@@ -15,14 +15,14 @@ export const StyledChip = styled(Chip)(
     bgColor = null,
     textColor = null,
   }: ChipPopType) => ({
-    borderRadius: "7px",
-    padding: "0.5rem",
+    borderRadius: "6px",
+    padding: "0.125rem 0.1875rem",
     fontFamily: "Poppins, sans-serif",
-    fontWeight: 400,
+    fontWeight: 500,
     marginLeft: ml ? ml : "0",
     marginTop: mt ? mt : "0",
-    background: bgColor ? bgColor : "#7B2CBF",
-    color: textColor ? textColor : "#fff",
+    background: bgColor ? bgColor : "#E5EDFF",
+    color: textColor ? textColor : "#42389D",
     cursor: "default",
   })
 );
