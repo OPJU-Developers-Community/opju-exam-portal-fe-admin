@@ -7,6 +7,10 @@ export interface XButtonProps {
   mt?: string;
   textColor?: string;
   bgColor?: string;
+  fontSize?: string;
+  sx?: object | null;
+  onClick?: any;
+  disableRipple?: boolean;
 }
 
 const XButton = (props: XButtonProps) => {
