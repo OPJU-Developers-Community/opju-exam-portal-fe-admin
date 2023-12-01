@@ -10,7 +10,7 @@ export const FilterWrapper = styled("div")(
   }: FilterPropType) => ({
     background: "rgba(247, 247, 247, 0.50)",
   border: "1px solid rgba(0, 0, 0, 0.10)",
-  borderRadius: "8px",
+  borderRadius: "6px",
   width: "100%",
   maxWidth: mxWidth ?  mxWidth : "494px",
   padding: "0.5rem 0.3rem",
@@ -24,12 +24,9 @@ type tabType = {
   active: Boolean;
 };
 export const StyledTab = styled("span")(({ active }: tabType) => ({
-  background: active ? "#FCFCFC" : "transparent",
-  border: active
-    ? "1px solid rgba(137, 137, 137, 0.40)"
-    : "1px solid transparent",
+  background: active ? "#1C64F2" : "transparent",
+  color: active ? "#FFFFFF" : "auto",
   borderRadius: "6px",
-  padding: "0.5rem 1rem",
+  padding: "8px 16px",
   cursor: "pointer",
-  filter: active ? "drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12))" : "none",
 }));

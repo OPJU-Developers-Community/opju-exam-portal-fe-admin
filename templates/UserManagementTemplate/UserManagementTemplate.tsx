@@ -1,11 +1,11 @@
 // lib & others
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
-// styled component
+// components
 import FilterTab from "@/molecules/FilterTab/FilterTab";
-import Header from "@/organisms/Header/Header";
+import UserManagementContainer from "@/organisms/UserManagementContainer/UserManagementContainer";
 import {
   ControlContainer,
   PageTitle,
@@ -13,7 +13,6 @@ import {
   StyledContainer,
   Wrapper,
 } from "./UserManagementTemplateStyle";
-import UserManagementTable from "@/organisms/UserManagementTable/UserManagementTable";
 import XButton from "@/atoms/XButton/XButton";
 import { EditButtonIcon } from "@/atoms/Icons";
 
@@ -22,8 +21,11 @@ import { getUserManagement } from "@/redux/slices/userManagementSlice";
 
 // utils
 import { userManagementTabs } from "@/utils/constants";
+import CreateUserModal from "@/molecules/CreateUserModal/CreateUserModal";
 
 const UserManagementTemplate = () => {
+  const [openCreateUserModal, setOpenCreateUserModal] = useState(false);
+
   const { data, apiStatus } = useSelector((state: any) => state.userManagement);
   const dispatch = useDispatch<any>();
 
@@ -37,26 +39,42 @@ const UserManagementTemplate = () => {
       getUserManagement({
         params: {
           type: tab,
+          page: 1,
+          limit: 10,
         },
       })
     );
   }, [tab]);
 
+  const handleCreateUserModalOpen = () => setOpenCreateUserModal(true);
+
+  const handleCreateUserModalClose = () => setOpenCreateUserModal(false);
+
   return (
     <Wrapper>
-      <Header />
       <StyledContainer>
-        <PageTitle variant="h4" fontWeight={600} marginBottom={3}>
+        <PageTitle variant="h5" fontWeight={600} marginBottom={3}>
           User Management
         </PageTitle>
         <ControlContainer>
-          <FilterTab tabs={userManagementTabs} mxWidth="" />
-          <XButton startIcon={<EditButtonIcon />} onClick={() => console.log("buton pressed")}>Add</XButton>
+          <FilterTab tabs={userManagementTabs} mxWidth={""} />
+          <XButton
+            startIcon={<EditButtonIcon />}
+            sx={{ fontSize: "14px" }}
+            bgColor="#1F2A37"
+            onClick={handleCreateUserModalOpen}
+          >
+            Create user
+          </XButton>
         </ControlContainer>
-        <StyledBox>
-          <UserManagementTable data={data} apiStatus={apiStatus} />
-        </StyledBox>
       </StyledContainer>
+      <StyledBox>
+        <UserManagementContainer apiStatus={apiStatus} data={data} />
+      </StyledBox>
+      <CreateUserModal
+        openCreateUserModal={openCreateUserModal}
+        handleCreateUserModalClose={handleCreateUserModalClose}
+      />
     </Wrapper>
   );
 };

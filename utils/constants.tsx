@@ -131,3 +131,29 @@ export const AuthPageAd = [
 ];
 
 export const defaultErrorMessage = "Something went wrong";
+
+export const defaultProfilePic =
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D";
+
+export const createUserFields = [
+  {
+    label: "User name",
+    name: "name",
+    placeholder: "Enter user name",
+  },
+  {
+    label: "Email id",
+    name: "email_id",
+    placeholder: "Enter user email id",
+  },
+  {
+    label: "Password",
+    name: "password",
+    placeholder: "Enter user password",
+  },
+  {
+    label: "Subject access",
+    name: "subject_access",
+    placeholder: "Provide subject access",
+  },
+];

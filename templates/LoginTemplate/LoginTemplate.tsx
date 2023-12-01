@@ -34,7 +34,6 @@ import {
   InputStartEmailIcon,
   InputStartPasswordIcon,
 } from "@/atoms/Icons";
-import adminImg from "@/public/adminImg.svg";
 
 // utils
 import { AuthPageAd, defaultErrorMessage } from "@/utils/constants";

@@ -2,6 +2,7 @@
 
 // hoc
 import withAuth from "@/hoc/withAuth";
+import CommonTemplate from "@/templates/CommonTemplate/CommonTemplate";
 
 // components
 import EducationManagementTemplate from "@/templates/EducationManagementtemplate/EducationManagementTemplate";
@@ -9,7 +10,10 @@ import EducationManagementTemplate from "@/templates/EducationManagementtemplate
 // redux
 
 const EducationManagement = () => {
-  return <EducationManagementTemplate />
+  return;
+  <CommonTemplate>
+    <EducationManagementTemplate />
+  </CommonTemplate>;
 };
 
 export default withAuth(EducationManagement);

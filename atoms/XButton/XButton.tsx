@@ -8,6 +8,9 @@ export interface XButtonProps {
   textColor?: string;
   bgColor?: string;
   onClick?: () => void; 
+  fontSize?: string;
+  sx?: object | null;
+  disableRipple?: boolean;
 }
 
 const XButton = (props: XButtonProps) => {
