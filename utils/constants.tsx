@@ -67,6 +67,22 @@ export const userManagementTabs = [
   },
 ];
 
+export const educationManagementTabs = [
+  {
+    query: "all",
+    value: "All"
+  },
+  {
+    query: "university",
+    value: "University"
+  },
+  {
+    query: "school",
+    value: "School"
+  },
+
+]
+
 export const userManagementTableHeadCells = [
   {
     label: "S.no",
@@ -142,3 +158,31 @@ export const createUserFields = [
     placeholder: "Provide subject access",
   },
 ];
+
+export const createEducatonFields = [
+  {
+    label: "Program name",
+    name: "program",
+    placeholder: "Enter program name",
+  },
+  {
+    label: "Course name",
+    name: "course",
+    placeholder: "Enter course name",
+  },
+  {
+    label: "Branch",
+    name: "branch",
+    placeholder: "Enter branch",
+  },
+  {
+    label: "Semester",
+    name: "semester",
+    placeholder: "Enter semester",
+  },
+  {
+    label: "Subjects",
+    name: "subjects",
+    placeholder: "Enter subjects",
+  },
+]
