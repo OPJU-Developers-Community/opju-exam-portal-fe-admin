@@ -2,11 +2,17 @@ import { Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const Wrapper = styled("div")({
-  height: "100vh",
+  padding: "2rem 3rem 0 3rem",
+  position: "relative",
 });
 
 export const StyledContainer = styled("div")({
-  padding: "4rem 42px 0 42px",
+  position: "fixed",
+  top: 0,
+  width: "100%",
+  padding: "7rem 0 1rem 0",
+  background: "#f8f9fa",
+  zIndex: "1",
 });
 
 export const PageTitle = styled(Typography)({
@@ -18,8 +24,9 @@ export const ControlContainer = styled("div")({
   justifyContent: "space-between",
   alignItems: "center",
   marginTop: "2rem",
+  width: "calc(90% - 5rem)",
 });
 
 export const StyledBox = styled("div")({
-  marginTop: "3rem",
+  marginTop: "11rem",
 });
