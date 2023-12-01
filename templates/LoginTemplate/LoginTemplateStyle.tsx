@@ -1,5 +1,5 @@
+import { TextField, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
-import { Button, Link, TextField } from "@mui/material";
 
 export const LoginWrapper = styled("div")({
   display: "flex",
@@ -7,10 +7,12 @@ export const LoginWrapper = styled("div")({
 });
 
 export const LeftSection = styled("div")({
-  flex: 1,
+  width: "30%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  background: "#4361ee",
+  padding: "0 3rem",
 });
 
 export const RightSection = styled("div")({
@@ -18,6 +20,18 @@ export const RightSection = styled("div")({
   backgroundColor: "#f8f9fa",
   display: "flex",
   alignItems: "center",
+});
+
+export const FlexContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+export const Text = styled(Typography)({
+  color: "#f8f9fa",
+  fontFamily: "Poppins, sans-serif",
 });
 
 export const LoginBox = styled("div")({
@@ -60,7 +74,7 @@ export const InputField = styled(TextField)({
   },
 
   "& .MuiInputBase-root:hover": {
-    borderBottom: "none", // Remove the underline when the input is focused
+    borderBottom: "none",
   },
 
   "& .MuiInputBase-input": {
@@ -72,21 +86,18 @@ export const InputField = styled(TextField)({
 
 export const LoginButton = styled(Button)({
   width: "100%",
-  margin: "1rem 0",
+  margin: "0.5rem 0",
+  padding: "10px 20px",
   boxShadow: "none",
-  backgroundColor: "#4361ee",
-  textTransform: "capitalize",
-  fontFamily: "Nunito",
-  fontSize: 16,
+  background: "#4361ee",
+  fontFamily: "Poppins, sans-serif",
+  fontSize: "16px",
   fontWeight: 500,
-  padding: "0.65rem 0",
+  borderRadius: "8px",
+  textTransform: "none",
 
   "&.MuiButtonBase-root:hover": {
-    boxShadow: "none",
     backgroundColor: "#4361ee",
+    boxShadow: "none",
   },
 });
-
-export const CreateAccountBox = styled(Link)({
-  
-})
