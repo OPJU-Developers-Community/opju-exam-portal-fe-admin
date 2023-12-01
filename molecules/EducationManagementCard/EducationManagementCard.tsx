@@ -1,4 +1,7 @@
-import { Box, Divider, Typography } from "@mui/material";
+// libs & others
+
+// styled component
+import { Box, Divider } from "@mui/material";
 import {
   CardBody,
   CardHeader,
@@ -9,9 +12,16 @@ import {
   StyledText,
   Text,
 } from "./EducationManagementCardSyle";
-import { BookIcon, BranchIcon, IconBuddyDeleteIcon, PencilIcon } from "@/atoms/Icons";
+import {
+  BookIcon,
+  BranchIcon,
+  IconBuddyDeleteIcon,
+  PencilIcon,
+} from "@/atoms/Icons";
 import XChip from "@/atoms/XChip/XChip";
 import XButton from "@/atoms/XButton/XButton";
+
+// utls
 
 interface educationManagementCardProps {
   item: {

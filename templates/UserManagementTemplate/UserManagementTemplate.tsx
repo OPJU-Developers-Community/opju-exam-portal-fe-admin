@@ -57,7 +57,7 @@ const UserManagementTemplate = () => {
           User Management
         </PageTitle>
         <ControlContainer>
-          <FilterTab tabs={userManagementTabs} />
+          <FilterTab tabs={userManagementTabs}  mxWidth=""/>
           <XButton
             startIcon={<EditButtonIcon />}
             sx={{ fontSize: "14px" }}

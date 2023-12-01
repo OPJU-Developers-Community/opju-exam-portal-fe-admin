@@ -1,9 +1,10 @@
-import NoDataFound from "@/molecules/NoDataFound/NoDataFound";
-import React from "react";
+// compnents
+import EducationManagementCard from "@/molecules/EducationManagementCard/EducationManagementCard";
 import { Wrapper } from "./EducationManagementContainerStyle";
 import { Box, Divider, Skeleton } from "@mui/material";
-import EducationManagementCard from "@/molecules/EducationManagementCard/EducationManagementCard";
+import NoDataFound from "@/molecules/NoDataFound/NoDataFound";
 
+// types
 interface educationManagementProps {
   apiStatus: string;
   data: [];
