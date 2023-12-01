@@ -5,8 +5,10 @@ type XChipPropType = {
   label: string;
   ml?: string;
   mt?: string;
+  mr?: string;
   bgColor?: string;
   textColor?: string;
+  fontSize?: string;
 };
 
 const XChip = (props: XChipPropType) => {

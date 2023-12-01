@@ -10,7 +10,9 @@ import { stateType } from "@/types/index.type"
 
 export interface userManagementpayloadType {
     params: {
-        type: string | string[]
+        type: string | string[],
+        page: number,
+        limit: number
     }
 }
 

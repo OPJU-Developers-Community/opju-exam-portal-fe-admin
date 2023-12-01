@@ -10,7 +10,7 @@ export const userManagementApi = (payload: userManagementpayloadType) => {
 
   return baseApi({
     method: "GET",
-    url: "/user-management",
+    url: "/get-assessment-coordinator",
     params,
   });
 };
