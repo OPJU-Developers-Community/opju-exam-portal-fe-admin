@@ -15,7 +15,7 @@ const UserManagementContainer = (props: userManagementProps) => {
     <>
       {apiStatus === "success" && !data?.length && <NoDataFound />}
 
-      {apiStatus === "success" && data?.length && (
+      {apiStatus === "success" && data?.length >= 1 && (
         <Wrapper>
           {data?.map((item, i) => (
             <UserManagementCard key={i} item={item} />
