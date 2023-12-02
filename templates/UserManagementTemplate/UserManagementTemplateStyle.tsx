@@ -9,8 +9,9 @@ export const Wrapper = styled("div")({
 export const StyledContainer = styled("div")({
   position: "fixed",
   top: 0,
+  left: 0,
   width: "100%",
-  padding: "7rem 0 1rem 0",
+  padding: "7rem 0 1rem 9rem",
   background: "#f8f9fa",
   zIndex: "1",
 });
