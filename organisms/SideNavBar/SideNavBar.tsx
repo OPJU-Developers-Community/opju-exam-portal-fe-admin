@@ -1,6 +1,7 @@
 // lib
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 // components
 import {
@@ -27,13 +28,23 @@ import {
   IconBuddyLogoutIcon,
   IconBuddyMenuIcon,
 } from "@/atoms/Icons";
-import { navLinks } from "@/utils/constants";
+import { defaultProfilePic, navLinks } from "@/utils/constants";
 
 // types
 import { ComponentChildrenProps } from "@/types/index.type";
 
 const SideNavBar = ({ children }: ComponentChildrenProps) => {
   const [open, setOpen] = useState(false);
+  const [profileName, setProfileName] = useState("");
+
+  useEffect(() => {
+    let profileName = localStorage.getItem("username");
+    if (profileName) {
+      setProfileName(JSON.parse(profileName));
+    } else {
+      setProfileName("Dummy user");
+    }
+  }, []);
 
   const router = useRouter();
 
@@ -70,10 +81,10 @@ const SideNavBar = ({ children }: ComponentChildrenProps) => {
               )} */}
             </Box>
             <ProfileContainer>
-              <Avatar alt="Remy Sharp" />
+              <Avatar alt="Remy Sharp" src={defaultProfilePic} />
               <Box marginX={0.5} textAlign="left" textTransform="capitalize">
                 <Text fontSize="14px" fontWeight={500}>
-                  Frank C. Gautier
+                  {profileName}
                 </Text>
                 <Text fontSize="12px" fontWeight={600} color="#565656">
                   Admin

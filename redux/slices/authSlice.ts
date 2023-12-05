@@ -51,6 +51,7 @@ const authSlice = createSlice({
       state.status = "idle";
       state.message = "";
       localStorage.removeItem("access_token");
+      localStorage.removeItem("username");
     },
   },
   extraReducers: (builder) => {
@@ -65,6 +66,7 @@ const authSlice = createSlice({
         "access_token",
         JSON.stringify(action.payload?.data?.token)
       );
+      localStorage.setItem("username", JSON.stringify(action.payload?.data?.name))
     });
     builder.addCase(signUp.rejected, (state, action: any) => {
       state.status = "failed";
@@ -84,6 +86,7 @@ const authSlice = createSlice({
         "access_token",
         JSON.stringify(action.payload?.data?.token)
       );
+      localStorage.setItem("username", JSON.stringify(action.payload?.data?.name))
     });
     builder.addCase(login.rejected, (state, action: any) => {
       state.status = "failed";
