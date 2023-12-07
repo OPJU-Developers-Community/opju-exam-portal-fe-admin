@@ -1,16 +1,20 @@
 import { styled } from "@mui/system";
 
-export const FilterWrapper = styled("div")({
+type widthType = {
+  mxWidth: string
+}
+
+export const FilterWrapper = styled("div")(({mxWidth}:widthType ) => ({
   background: "rgba(247, 247, 247, 0.50)",
   border: "1px solid rgba(0, 0, 0, 0.10)",
   borderRadius: "6px",
   width: "100%",
-  maxWidth: "494px",
+  maxWidth: mxWidth ? mxWidth : "494px",
   padding: "5px 5px",
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",
-});
+}));
 
 type tabType = {
   active: Boolean;

@@ -4,17 +4,16 @@
 import withAuth from "@/hoc/withAuth";
 
 // components
-import NavBar from "@/components/NavBar/NavBar";
-import EducationManagementSection from "@/components/EducationManagementSection/EducationManagementSection";
+import CommonTemplate from "@/templates/CommonTemplate/CommonTemplate";
+import EducationManagementTemplate from "@/templates/EducationManagementTemplate/EducationManagementTemplate";
 
 // redux
 
 const EducationManagement = () => {
   return (
-    <div>
-      <NavBar />
-      <EducationManagementSection />
-    </div>
+    <CommonTemplate>
+      <EducationManagementTemplate />
+    </CommonTemplate>
   );
 };
 
