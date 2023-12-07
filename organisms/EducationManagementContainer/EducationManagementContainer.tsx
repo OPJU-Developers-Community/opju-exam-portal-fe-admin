@@ -16,7 +16,7 @@ const EducationManagementContainer = (props: educationManagementProps) => {
     <>
       {apiStatus === "success" && !data?.length && <NoDataFound />}
 
-      {apiStatus === "success" && data?.length && (
+      {apiStatus === "success" && data?.length >= 1 && (
         <Wrapper>
           {data?.map((item, i) => (
             <EducationManagementCard key={i} item={item} />
