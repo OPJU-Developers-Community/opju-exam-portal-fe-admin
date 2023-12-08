@@ -1,7 +1,7 @@
 // lib
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // components
 import {
@@ -33,9 +33,14 @@ import { defaultProfilePic, navLinks } from "@/utils/constants";
 // types
 import { ComponentChildrenProps } from "@/types/index.type";
 
+// redux actions
+import { logOut } from "@/redux/slices/authSlice";
+
 const SideNavBar = ({ children }: ComponentChildrenProps) => {
   const [open, setOpen] = useState(false);
   const [profileName, setProfileName] = useState("");
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let profileName = localStorage.getItem("username");
@@ -58,6 +63,11 @@ const SideNavBar = ({ children }: ComponentChildrenProps) => {
 
   const navigateToPage = (path: string) => {
     router.push(path);
+  };
+
+  const handleLogout = () => {
+    dispatch(logOut());
+    router.push("/login");
   };
 
   return (
@@ -125,6 +135,7 @@ const SideNavBar = ({ children }: ComponentChildrenProps) => {
             <StyledListItem>
               <StyledListItemButton
                 open={open}
+                onClick={handleLogout}
                 isLogoutBtn={true}
                 disableRipple
               >

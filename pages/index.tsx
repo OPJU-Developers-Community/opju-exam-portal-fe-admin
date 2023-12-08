@@ -6,12 +6,13 @@ import withAuth from "@/hoc/withAuth";
 
 // template
 import DashboardTemplate from "@/templates/DashboardTemplate/DashboardTemplate";
+import CommonTemplate from "@/templates/CommonTemplate/CommonTemplate";
 
 function Home() {
   return (
-    <>
+    <CommonTemplate>
       <DashboardTemplate />
-    </>
+    </CommonTemplate>
   );
 }
 

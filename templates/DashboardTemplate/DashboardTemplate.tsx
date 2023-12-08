@@ -1,12 +1,7 @@
 // styled component
-import Header from "@/organisms/Header/Header";
 
 const DashboardTemplate = () => {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  return <div>Page under development...</div>;
 };
 
 export default DashboardTemplate;
