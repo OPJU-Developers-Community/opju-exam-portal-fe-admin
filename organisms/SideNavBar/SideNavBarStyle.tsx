@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const drawerWidth = 310;
+const drawerWidth = 280;
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -147,38 +147,35 @@ export const StyledListItemButton = styled(ListItemButton)(
     justifyContent: open ? "initial" : "center",
     margin: "1rem 0",
     borderRadius: "8px",
-    padding: "1rem 0.8rem",
+    padding: "0rem 0.8rem",
     transition: "color 100ms ease",
-    borderLeft: "5px solid rgba(65, 65, 65, 0)",
 
     ...(isCurrentPath && {
-      background: isLogoutBtn ? "rgba(239, 68, 68, 0.2)" : "#4361ee4a",
-      borderLeft: isLogoutBtn
-        ? "5px solid rgba(239, 68, 68, 0.5)"
-        : "5px solid #4361ee",
+      background: isLogoutBtn ? "rgba(239, 68, 68, 0.2)" : "#4361ee",
 
       "& .MuiTypography-root": {
-        color: isLogoutBtn ? "rgba(239, 68, 68, 1)" : "#4361ee",
+        color: isLogoutBtn ? "rgba(239, 68, 68, 1)" : "#fff",
       },
 
       "& .MuiListItemIcon-root  svg": {
-        color: isLogoutBtn ? "5px solid rgba(239, 68, 68, 0.5)" : "#4361ee",
+        color: isLogoutBtn ? "5px solid rgba(239, 68, 68, 0.5)" : "#fff",
       },
     }),
 
     "&:hover": {
-      background: isLogoutBtn ? "rgba(239, 68, 68, 0.2)" : "#4361ee4a",
-      borderLeft: isLogoutBtn
-        ? "5px solid rgba(239, 68, 68, 0.5)"
-        : "5px solid #4361ee",
+      background: isLogoutBtn
+        ? "rgba(239, 68, 68, 0.2)"
+        : isCurrentPath
+        ? "#4361ee"
+        : "rgba(0, 0, 0, 0.05)",
     },
 
     "&:hover .MuiTypography-root": {
-      color: isLogoutBtn ? "rgba(239, 68, 68, 1)" : "#4361ee",
+      color: isLogoutBtn ? "rgba(239, 68, 68, 1)" : isCurrentPath && "#fff",
     },
 
     "&:hover .MuiListItemIcon-root  svg": {
-      color: isLogoutBtn ? "rgba(239, 68, 68, 0.8)" : "#4361ee",
+      color: isLogoutBtn ? "rgba(239, 68, 68, 0.8)" : isCurrentPath && "#fff",
     },
   })
 );
@@ -195,6 +192,7 @@ export const ListLink = styled(Typography)(({ theme }) => ({
   marginLeft: "1rem",
   fontFamily: "Poppins, sans-serif",
   color: "#000",
+  fontSize: "14px",
 }));
 
 export const ProfileContainer = styled("div")({
