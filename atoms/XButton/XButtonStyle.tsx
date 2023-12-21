@@ -8,7 +8,11 @@ type ButtonPopType = {
 };
 
 export const StyledXButton = styled(Button)(
-  ({ textColor = null, mt = null, bgColor = null }: ButtonPopType) => ({
+  ({
+    textColor = null,
+    mt = null,
+    bgColor = null,
+  }: ButtonPopType) => ({
     color: textColor ? textColor : "#FFFFFF",
     background: bgColor ? bgColor : "#1A56DB",
     padding: "8px 16px",
@@ -18,8 +22,9 @@ export const StyledXButton = styled(Button)(
     textTransform: "capitalize",
     marginTop: mt ? mt : "0px",
 
-    "&:hover": {
+    "&.MuiButtonBase-root:hover": {
       background: bgColor ? bgColor : "#1A56DB",
+      boxShadow: "none",
     },
   })
 );
