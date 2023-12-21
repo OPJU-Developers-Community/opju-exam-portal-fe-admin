@@ -38,6 +38,7 @@ import {
 
 import { AuthPageAd, defaultErrorMessage } from "@/utils/constants";
 import { errorNotify, successNotify } from "@/utils/notify";
+import XButton from "@/atoms/XButton/XButton";
 
 const Signup = () => {
   const [inputFieldValues, setInputFiledValues] = useState<signupType>({
@@ -45,6 +46,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const authState = useSelector((state: { auth: userState }) => state.auth);
 
@@ -53,12 +55,16 @@ const Signup = () => {
   const route = useRouter();
 
   useEffect(() => {
+    if (authState.status === "loading") setIsLoading(true);
+
     if (authState.status === "success") {
+      setIsLoading(false);
       successNotify({ message: authState.message });
       route.push("/");
     }
 
     if (authState.status === "failed") {
+      setIsLoading(false);
       errorNotify({ message: authState.message || defaultErrorMessage });
     }
   }, [authState.status]);
@@ -153,9 +159,22 @@ const Signup = () => {
               scale: 0.99,
             }}
           >
-            <SignupButton variant="contained" onClick={handleSignup}>
+            <XButton
+              sx={{
+                width: "100%",
+                padding: "10px 20px",
+                boxShadow: "none",
+                textTransform: "none",
+                margin: "0.5rem 0",
+                fontSize: "16px",
+              }}
+              bgColor="#4361ee"
+              onClick={handleSignup}
+              isLoading={isLoading}
+              disabled={isLoading}
+            >
               Sign Up
-            </SignupButton>
+            </XButton>
           </motion.div>
         </SigupBox>
       </RightSection>
