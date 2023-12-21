@@ -1,3 +1,4 @@
+import { Box, CircularProgress, Hidden } from "@mui/material";
 import { StyledXButton } from "./XButtonStyle";
 
 // interfaces
@@ -7,15 +8,30 @@ export interface XButtonProps {
   mt?: string;
   textColor?: string;
   bgColor?: string;
-  fontSize?: string;
   sx?: object | null;
   onClick?: any;
   disableRipple?: boolean;
+  isLoading?: boolean;
+  disabled?: boolean;
 }
 
 const XButton = (props: XButtonProps) => {
-  const { children } = props;
-  return <StyledXButton {...props}>{children}</StyledXButton>;
+  const { children, isLoading } = props;
+  return (
+    <StyledXButton {...props}>
+      {isLoading ? (
+        <CircularProgress
+          sx={{
+            height: "10px",
+            color: "#F9FAFB",
+          }}
+          size={30}
+        />
+      ) : (
+        children
+      )}
+    </StyledXButton>
+  );
 };
 
 export default XButton;
