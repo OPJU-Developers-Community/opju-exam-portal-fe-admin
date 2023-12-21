@@ -10,5 +10,5 @@ export const createEducationApi = (payload: educationManagementPayloadType) => {
         subjects: payload.subjects
     }
     
-    return axios.post(`${process.env.NEXT_PUBLIC_DEV_URL}/admin/education-management?type=${payload.queryType}`, newPayload)
+    return axios.post(`${process.env.NEXT_PUBLIC_URL}/admin/education-management?type=${payload.queryType}`, newPayload)
 }

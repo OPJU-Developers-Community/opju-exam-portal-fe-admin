@@ -9,7 +9,7 @@ import { defaultErrorMessage } from "@/utils/constants";
 export const signupApi = async (payload: signupType) => {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_DEV_URL}/signup`,
+      `${process.env.NEXT_PUBLIC_URL}/signup`,
       payload
     );
     return response.data;
@@ -24,7 +24,7 @@ export const signupApi = async (payload: signupType) => {
 export const loginApi = async (payload: loginType) => {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_DEV_URL}/login`,
+      `${process.env.NEXT_PUBLIC_URL}/login`,
       payload
     );
     return response.data;

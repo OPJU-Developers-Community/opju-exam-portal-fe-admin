@@ -9,7 +9,7 @@ const apiInstance = () => {
        const parsedToken = JSON.parse(access_token);
         
         return axios.create({
-            baseURL: `${process.env.NEXT_PUBLIC_DEV_URL}`,
+            baseURL: `${process.env.NEXT_PUBLIC_URL}`,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${parsedToken}`
